@@ -1,0 +1,43 @@
+@import './breakpoints';
+
+.select {
+    margin: 1rem;
+}
+
+.foodtrucks {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    .foodtrucks__card {
+        width: 18rem;
+        height: 5rem;
+    }
+    .foodtrucks__card-segment {
+            display: flex;
+            justify-content: space-between;
+            height: 100%;
+
+            &-name {
+                font-size: 14px;
+                line-height: 16px;
+            }
+            &-logo {
+                width: 7rem;
+                height: 5rem;
+                object-fit: cover;
+                border-radius: 4px;
+            }
+            &-address {
+                height: 3rem;
+                font-size: 12px;
+                line-height: 14px;
+            }
+            &-hours {
+                height: 3rem;
+                font-size: 12px;
+                line-height: 14px;
+            }
+            &-description {
+
+            }
+        }
+}

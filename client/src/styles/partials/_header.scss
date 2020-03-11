@@ -1,0 +1,93 @@
+@import './breakpoints';
+
+
+
+.header{
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-actual {
+            width: 7rem;
+            height: 6rem;
+            object-fit: cover;
+        }
+    }
+
+    &__line {
+        display: flex;
+
+        &-person {
+            width: 1.5rem;
+            height: 1.8rem;
+            border: none;
+        }
+        &-distance {
+            margin-top: .5rem;
+            width: 14rem;
+            height: 1rem;
+            border: none;
+        }
+
+        // change with white background color
+        &-foodtruck {
+            width: 2rem;
+            height: 2rem;
+            border: none;
+        }
+    }
+}
+// end of mobile
+
+
+@include tablet {
+    .header {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+         &__line-foodtruck {
+            width: 3rem;
+            height: 2.5rem;
+        }
+
+        &__line-distance {
+            width: 40rem;
+        }
+    }
+}
+// end of tablet
+
+
+@include desktop {
+    .header {
+        height: 21vh;
+
+        &__logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin: 1rem;
+
+            &-actual {
+                width: 17rem;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__line-foodtruck {
+            width: 3rem;
+            height: 2.5rem;
+        }
+
+        &__line-distance {
+            width: 82rem;
+        }
+    }
+}

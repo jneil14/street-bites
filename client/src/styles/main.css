@@ -1,0 +1,199 @@
+.header {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.header__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__logo-actual {
+  width: 7rem;
+  height: 6rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.header__line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header__line-person {
+  width: 1.5rem;
+  height: 1.8rem;
+  border: none;
+}
+
+.header__line-distance {
+  margin-top: .5rem;
+  width: 14rem;
+  height: 1rem;
+  border: none;
+}
+
+.header__line-foodtruck {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  .header__line-foodtruck {
+    width: 3rem;
+    height: 2.5rem;
+  }
+  .header__line-distance {
+    width: 40rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .header {
+    height: 21vh;
+  }
+  .header__logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+  }
+  .header__logo-actual {
+    width: 17rem;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .header__line-foodtruck {
+    width: 3rem;
+    height: 2.5rem;
+  }
+  .header__line-distance {
+    width: 82rem;
+  }
+}
+
+.map {
+  margin: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.map__image {
+  width: 15rem;
+  height: 7rem;
+  border-radius: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+  .map {
+    margin: 1.5rem;
+  }
+  .map__image {
+    width: 35rem;
+    height: 13rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .map {
+    margin-left: 11.25rem;
+    margin-right: 11.25rem;
+  }
+  .map__image {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    width: 80rem;
+    height: 20rem;
+  }
+}
+
+.select {
+  margin: 1rem;
+}
+
+.foodtrucks {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.foodtrucks .foodtrucks__card {
+  width: 18rem;
+  height: 5rem;
+}
+
+.foodtrucks .foodtrucks__card-segment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+}
+
+.foodtrucks .foodtrucks__card-segment-name {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.foodtrucks .foodtrucks__card-segment-logo {
+  width: 7rem;
+  height: 5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+
+.foodtrucks .foodtrucks__card-segment-address {
+  height: 3rem;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.foodtrucks .foodtrucks__card-segment-hours {
+  height: 3rem;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+html, body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+/*# sourceMappingURL=main.css.map */

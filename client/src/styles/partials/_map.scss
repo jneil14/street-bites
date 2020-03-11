@@ -1,0 +1,46 @@
+@import './breakpoints';
+
+.map {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+        &__image {
+        width: 15rem;
+        height: 7rem;
+        border-radius: 2px;
+    }
+}
+// end of mobile
+
+
+@include tablet {
+    .map {
+        margin: 1.5rem;
+
+        &__image {
+        width: 35rem;
+        height: 13rem;
+        }
+
+    }
+}
+// end of tablet
+
+
+@include desktop {
+    .map {
+        margin-left: 11.25rem;
+        margin-right: 11.25rem;
+
+
+        &__image {
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+            width: 80rem;
+            height: 20rem;
+            }
+
+    }
+}
