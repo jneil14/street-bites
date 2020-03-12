@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import Select from "react-select";
 import sampleTruck from '../assets/images/sample-food-truck.jpeg'
+import ReactModal from "react-modal";
+import Details from './Details';
+
+
+
 
 const options = [
   { value: "featured", label: "Featured" },
@@ -9,7 +14,18 @@ const options = [
 ];
 export default class Foodtrucks extends Component {
     state = {
-        selectedOption: null
+        selectedOption: null,
+        showModal: false,
+        details: []
+
+    }
+
+    handleOpenModal = () => {
+      this.setState({showModal: true})
+    }
+
+    handleCloseModal = () => {
+      this.setState({showModal: false})
     }
 
     handleChange = selectedOption => {
@@ -30,9 +46,16 @@ export default class Foodtrucks extends Component {
             />
 
             <div className="foodtrucks">
+             
+
               <div className="foodtrucks__card">
                 <div className="foodtrucks__card-segment">
-                  <h3 className="foodtrucks__card-segment-name">Dahbest Foodtruck</h3>
+                  <button
+                    className="foodtrucks__card-segment-name"
+                    onClick={this.handleOpenModal}
+                  >
+                    Dahbest Foodtruck
+                  </button>
                   <img
                     className="foodtrucks__card-segment-logo"
                     src={sampleTruck}
@@ -40,8 +63,12 @@ export default class Foodtrucks extends Component {
                   />
                 </div>
                 <div className="foodtrucks__card-segment">
-                  <h4 className="foodtrucks__card-segment-address">455 Granville</h4>
-                  <h4 className="foodtrucks__card-segment-hours">9 a.m. - 10 p.m.</h4>
+                  <h4 className="foodtrucks__card-segment-address">
+                    455 Granville
+                  </h4>
+                  <h4 className="foodtrucks__card-segment-hours">
+                    9 a.m. - 10 p.m.
+                  </h4>
                 </div>
                 <div className="foodtrucks__card-segment">
                   <p className="foodtrucks__card-segment-description">
@@ -49,6 +76,17 @@ export default class Foodtrucks extends Component {
                   </p>
                 </div>
               </div>
+              <ReactModal
+                ariaHideApp={false}
+                isOpen={this.state.showModal}
+                contentLabel="Minimal Modal Example"
+              >
+                <Details
+                  closeModalNow={this.handleCloseModal}
+                  details={this.props.details}
+                  // updateTheState={this.props.updateTheState}
+                />
+              </ReactModal>
             </div>
           </>
         );
