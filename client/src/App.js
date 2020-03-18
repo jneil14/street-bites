@@ -4,13 +4,16 @@ import axios from "axios";
 import Header from "./components/Header";
 import Map from "./components/Map";
 import Foodtrucks from "./components/Foodtrucks";
-import Roulettes from "./components/Roulettes";
+// import New from "./components/New";
+// import Roulettes from "./components/Roulettes";
+
 
 class App extends Component {
   state = {
     info: []
   };
 
+  
   // API_KEY
 // const apiKey = "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo";
 
@@ -33,6 +36,7 @@ class App extends Component {
         <Header />
         <Map />
         <Foodtrucks info={this.state.info} />
+        {/* <New info={this.state.info} /> */}
 
         {/* <Roulettes /> */}
       </div>

@@ -10,10 +10,45 @@ function Roulettes () {
   }
     return (
       <>
-          <div className="roulette">
-            <h1 className="title">Roulette</h1>
-            <Roulette onChange={handleRouletteChange} items={items} colors={colors} />
+        <div className="roulette">
+          <div className="roulette__output">
+            <a href="#">
+              <h2 className="roulette__output-result">RESULT</h2>
+            </a>
           </div>
+          <div className="roulette__body">
+            <h1 className="title">Roulette</h1>
+            <Roulette
+              onChange={handleRouletteChange}
+              items={items}
+              colors={colors}
+            />
+          </div>
+          <div className="roulette__selected">
+            <ol className="roulette__selected-list">
+              <a href="#">
+                
+                <li> </li>
+              </a>
+              <a href="#">
+                
+                <li> </li>
+              </a>
+              <a href="#">
+                
+                <li> </li>
+              </a>
+              <a href="#">
+                
+                <li> </li>
+              </a>
+              <a href="#">
+                
+                <li> </li>
+              </a>
+            </ol>
+          </div>
+        </div>
       </>
     );
 }

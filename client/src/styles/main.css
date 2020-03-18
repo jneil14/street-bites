@@ -141,13 +141,15 @@
 }
 
 .foodtrucks {
+  height: 100%;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
 .foodtrucks .foodtrucks__card {
-  width: 18rem;
-  height: 5rem;
+  height: 100%;
+  width: 100%;
+  margin: 16px 0;
 }
 
 .foodtrucks .foodtrucks__card-segment {
