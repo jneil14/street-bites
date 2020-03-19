@@ -8,12 +8,15 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "google-map-react": "^1.1.7",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-google-maps": "^9.4.5",
     "react-roulette": "0.0.1",
     "react-scripts": "3.4.0",
     "react-select": "^3.0.8",
-    "styled-jsx": "^3.2.4"
+    "styled-jsx": "^3.2.4",
+    "swr": "^0.1.18"
   },
   "scripts": {
     "start": "react-scripts start",
