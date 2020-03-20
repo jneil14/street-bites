@@ -18,7 +18,7 @@ export default function Mapper() {
     "https://cors-anywhere.herokuapp.com/http://data.streetfoodapp.com/1.1/schedule/vancouver";
   const { data, error } = useSwr(url, { fetcher });
   const trucks = data && !error ? data : [];
- 
+ console.log("From Mapper: data", Object.entries(trucks))
   
 return (
   <div style={{ height: "100vh", width: "100%" }}>
