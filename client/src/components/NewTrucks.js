@@ -7,10 +7,10 @@ import Details from "./Details";
 
 const options = [
   { value: "featured", label: "Featured" },
-  { value: "new", label: <Link to={"/new"}> "New" </Link> },
+  { value: "new", label: "New" },
   { value: "all", label: "All" }
 ];
-export default class Foodtrucks extends Component {
+export default class NewTrucks extends Component {
   constructor(props) {
     super(props);
 
@@ -58,17 +58,20 @@ export default class Foodtrucks extends Component {
   render() {
     const { selectedOption } = this.state;
 
-  const newTrucks = this.state.filteredData.metadata.new;
-  console.log("filtered", newTrucks);
-  const vendors_entries = Object.entries(this.state.filteredData.vendors);
-  console.log(vendors_entries);
+    const newTrucks = this.state.filteredData.metadata.new;
+    console.log("New Food Trucks", newTrucks);
 
- const newNames =  newTrucks.map(truck => {
-    vendors_entries.some(arr => {
-      return arr[0] === truck
-    })
-  });
-console.log(newNames);
+
+    const trucksNew = this.state.filteredData.metadata.new;
+    console.log("filtered", newTrucks);
+    const vendors_entries = Object.entries(this.state.filteredData.vendors);
+    console.log(vendors_entries);
+
+    trucksNew.map(truck => {
+
+    });
+
+
 
     // check if info props is loading
     if (!undefined) {
@@ -78,9 +81,9 @@ console.log(newNames);
     }
 
     let foodTruck;
-    if (this.props.info.vendors) {
+    if (newTrucks === this.props.info.vendors.name) {
       const truck = Object.entries(this.props.info.vendors);
-      truck.length = 10;
+      
       foodTruck = truck.map(array => {
         let logo = unavailable;
         if (array[1].images) logo = array[1].images.logo;
@@ -189,5 +192,3 @@ console.log(newNames);
     );
   }
 }
-
-

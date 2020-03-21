@@ -3,10 +3,10 @@ import "./styles/main.css";
 import axios from "axios";
 import Header from "./components/Header";
 import Map from "./components/Map";
-
-
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import NewTrucks from './components/NewTrucks';
 import Foodtrucks from "./components/Foodtrucks";
-
+import Details from "./components/Details";
 // import Roulettes from "./components/Roulettes";
 
 
@@ -41,18 +41,32 @@ class App extends Component {
     if(!this.state.info) return <h1> Loading..</h1>
 
     return (
-      <div className="App">
+      <Router className="App">
         <Header />
-        <Map info={this.state.info.vendors}/>
-        
+        <Map info={this.state.info.vendors} />
+
         {/* <TruckMap info={this.state.info.vendors} /> */}
-        
-        <Foodtrucks info={this.state.info} /> */}
-        
+
+        <Switch>
+          <Route
+            path={`/new`}
+            render={routerProps => (
+              <NewTrucks info={this.state.info} {...routerProps} />
+            )}
+          />
+
+          <Route
+            path={`/`}
+            render={routerProps => (
+              <Foodtrucks info={this.state.info} {...routerProps} />
+            )}
+          />
+        </Switch>
+        {/* <Foodtrucks info={this.state.info} /> */}
+        <Details info={this.state.info} />
 
         {/* <Roulettes /> */}
-        
-      </div>
+      </Router>
     );
   }
 }
