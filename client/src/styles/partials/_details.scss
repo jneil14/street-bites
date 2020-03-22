@@ -1,0 +1,102 @@
+@import './breakpoints';
+@import './fonts';
+
+
+.details {
+    // height: 100%;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    .details__card {
+        height: 100%;
+        width: 100%;
+        // width: 18rem;
+        // height: 5rem;
+        // margin: 16px 0;
+        
+    }
+    .details__card-segment {
+            // display: flex;
+            // justify-content: space-between;
+            // height: 100%;
+            margin-bottom: 1rem;
+            
+
+            &-name {
+                height: 100%;
+                font-family: Popsicle;
+                font-size: 14px;
+                line-height: 16px;
+                // text-decoration: none;
+                color: inherit;
+            }
+            &-logo {
+                width: 10rem;
+                height: 5rem;
+                
+                border-radius: 4px;
+            }
+
+            &-address, &-hours, &-phone, &-website, &-email, &-payment, &-rank {
+                font-size: 12px;
+                line-height: 14px;
+            }
+            
+            &-description {
+                font-size: 14px;
+                line-height: 18px;
+                margin-bottom: 1rem;
+            }
+        }
+}
+// end of mobile
+
+
+
+// tablet
+@include tablet {
+    .details__card-segment {
+            display: flex;
+            justify-content: space-between;
+        }
+}
+
+
+// desktop
+@include tablet {
+   .details__card-segment {
+            // display: flex;
+            // justify-content: space-between;
+            // height: 100%;
+            
+
+            &-name {
+                height: 100%;
+                // font-family: Apple-Butter;
+                font-size: 32px;
+                line-height: 36px;
+                // text-decoration: none;
+                color: inherit;
+            }
+            &-logo {
+                width: 5rem;
+                height: 5rem;
+                border-radius: 4px;
+            }
+            &-address {
+                height: 3rem;
+                font-size: 18px;
+                line-height: 24px;
+            }
+            &-hours, &-phone, &-website, &-payment, &-rank {
+                height: 3rem;
+                font-size: 18px;
+                line-height: 24px;
+            }
+            
+            &-description {
+                font-size: 18px;
+                line-height: 24px;
+                margin-bottom: 1rem;
+            }
+        }
+}

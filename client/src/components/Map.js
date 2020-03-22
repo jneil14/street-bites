@@ -13,8 +13,9 @@ const MapMarker = withScriptjs(
   withGoogleMap(props => {
     return (
       <GoogleMap
-        defaultZoom={10}
+        defaultZoom={11}
         defaultCenter={{ lat: 49.246292, lng: -123.116226 }}
+        className="map"
       >
         {Object.keys(props.markers).map(marker => {
           const onClick = props.onClick.bind(this, props.markers[marker]);
@@ -31,7 +32,6 @@ const MapMarker = withScriptjs(
                   props.markers[marker].last &&
                   props.markers[marker].last.longitude
               }}
-              
               icon={{
                 url: truckMarker,
                 scaledSize: new window.google.maps.Size(35, 40)
@@ -98,13 +98,13 @@ export default class Map extends Component {
     }
     render() {
         return (
-          <MapMarker
+          <MapMarker className="map"
             selectedMarker={this.state.selectedMarker}
             markers={this.props.info}
             onClick={this.handleClick}
             googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px` }} />}
+            containerElement={<div style={{ height: `400px`, border: `1px solid grey `, margin: `1rem` }} />}
             mapElement={<div style={{ height: `100%` }} />}
           />
         );

@@ -6,6 +6,7 @@ import Map from "./components/Map";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import NewTrucks from './components/NewTrucks';
 import Foodtrucks from "./components/Foodtrucks";
+import AllTrucks from "./components/AllTrucks";
 import Details from "./components/Details";
 // import Roulettes from "./components/Roulettes";
 
@@ -57,13 +58,21 @@ class App extends Component {
 
           <Route
             path={`/`}
+            exact
             render={routerProps => (
-              <Foodtrucks info={this.state.info} {...routerProps} />
+              <Foodtrucks info={this.state.info} {...routerProps} exact={'/'} />
+            )}
+          />
+
+          <Route
+            path={`/alltrucks`}
+            render={routerProps => (
+              <AllTrucks info={this.state.info} {...routerProps} />
             )}
           />
         </Switch>
         {/* <Foodtrucks info={this.state.info} /> */}
-        <Details info={this.state.info} />
+        {/* <Details info={this.state.info} /> */}
 
         {/* <Roulettes /> */}
       </Router>

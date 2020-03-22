@@ -47,7 +47,7 @@ export default class NewTrucks extends Component {
   handleCloseModal = () => {
     this.setState({ showModal: false });
     // window.location.pathname = "/foodtrucks";
-    return <Redirect to="/foodtrucks" />;
+    return <Redirect to="/new" />;
   };
 
   handleChange = selectedOption => {
@@ -62,42 +62,58 @@ export default class NewTrucks extends Component {
     console.log("New Food Trucks", newTrucks);
 
 
-    const trucksNew = this.state.filteredData.metadata.new;
-    console.log("filtered", newTrucks);
-    const vendors_entries = Object.entries(this.state.filteredData.vendors);
-    console.log(vendors_entries);
+    // const trucksNew = this.state.filteredData.metadata.new;
+    // console.log("filtered", newTrucks);
+    // const vendors_entries = Object.entries(this.state.filteredData.vendors);
+    // console.log(vendors_entries);
 
-    trucksNew.map(truck => {
+    // newTrucks.map(truck => {
 
-    });
+    // });
 
 
 
+     const newList = this.state.filteredData.metadata.new;
+     console.log("filtered", newList);
+     const vendorsEntries = Object.entries(this.state.filteredData.vendors);
+     console.log("vendors", vendorsEntries);
+     console.log(vendorsEntries[0][1]);
+     const newNames = newList.map(truck => {
+       return vendorsEntries.filter(arr => {
+         return arr[1].identifier === truck;
+       });
+     });
+     console.log(newNames);
+
+     let foodTruck;
     // check if info props is loading
-    if (!undefined) {
+    if (undefined) {
       // return (<div>hey</div>)
-    } else {
-      return <p className="loading">Loading..</p>;
-    }
+      return <p className="loading">Loading...</p>;
 
-    let foodTruck;
-    if (newTrucks === this.props.info.vendors.name) {
-      const truck = Object.entries(this.props.info.vendors);
+    } else {
+
+    
+console.log(newNames[0][0][1]);
+
+    // if (newTrucks === this.props.info.vendors.name) {
+    //   const truck = Object.entries(this.props.info.vendors);
       
-      foodTruck = truck.map(array => {
+      foodTruck = newNames.map((array, index) => {
+          console.log(array[0]["1"]);
         let logo = unavailable;
-        if (array[1].images) logo = array[1].images.logo;
+        if (array[0]["1"].images) logo = array[0]["1"].images.logo;
 
         let description = "";
-        if (array[1].description_short)
-          description = array[1].description_short;
-        else description = array[1].description;
+        if (array[0]["1"].description_short)
+          description = array[0]["1"].description_short;
+        else description = array[0]["1"].description;
 
         let hours = "";
         let startHours = "";
         let endHours = "";
-        if (array[1].open.length !== 0) {
-          console.log(typeof array[1].open[0].start);
+        if (array[0]["1"].open.length !== 0) {
+          console.log(typeof array[0]["1"].open[0].start);
 
           // array[1].open.map(time => {
           //   let start = new Date(time.start);
@@ -105,15 +121,17 @@ export default class NewTrucks extends Component {
           //   let end = new Date(time.end);
           //   endHours = end.getHours();
           // })
-          let start = new Date(array[1].open[0].start * 1000);
+          let start = new Date(array[0]["1"].open[0].start * 1000);
           console.log(start);
           startHours = start.getHours();
-          let end = new Date(array[1].open[0].end * 1000);
+          let end = new Date(array[0]["1"].open[0].end * 1000);
           endHours = end.getHours();
         } else {
-          let date = new Date(array[1].last.time * 1000);
+          let date = new Date(array[0]["1"].last.time * 1000);
           hours = date.getHours();
         }
+        
+      
 
         return (
           // OG stucture
@@ -126,10 +144,10 @@ export default class NewTrucks extends Component {
                   onClick={this.handleOpenModal}
                 >
                   <Link
-                    to={`/foodtrucks/${array[1].identifier}`}
-                    key={array[1].identifier}
+                    to={`/new/${array[0][1].identifier}`}
+                    key={array[0][1].identifier}
                   >
-                    {array[1].name}
+                    {array[0][1].name}
                   </Link>
                   {/* <Switch>
                     <Route path={`/foodtrucks/:identifier`} component={Details} />
@@ -137,14 +155,14 @@ export default class NewTrucks extends Component {
                 </a>
                 <img
                   className="foodtrucks__card-segment-logo"
-                  src={logo}
+                  src={logo ? logo : unavailable}
                   alt="food truck logo"
                 />
               </div>
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[1].last.display}
+                  {array[0][1].last.display}
                 </h4>
                 <h4 className="foodtrucks__card-segment-hours">
                   {startHours
@@ -164,7 +182,7 @@ export default class NewTrucks extends Component {
               contentLabel="Minimal Modal Example"
             >
               <Route
-                path={`/foodtrucks/:identifier`}
+                path={`/new/:identifier`}
                 render={routerProps => (
                   <Details
                     vendors={this.state.filteredData}
@@ -178,7 +196,7 @@ export default class NewTrucks extends Component {
         );
       });
     }
-
+    
     return (
       <>
         <Select

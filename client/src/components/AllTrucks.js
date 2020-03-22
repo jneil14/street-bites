@@ -10,7 +10,7 @@ const options = [
   { value: "new", label: <Link to={"/new"} className="options__new"> New </Link> },
   { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> }
 ];
-export default class Foodtrucks extends Component {
+export default class AllTrucks extends Component {
   constructor(props) {
     super(props);
 
@@ -47,7 +47,7 @@ export default class Foodtrucks extends Component {
   handleCloseModal = () => {
     this.setState({ showModal: false });
     // window.location.pathname = "/foodtrucks";
-    return <Redirect to="/foodtrucks" />;
+    return <Redirect to="/alltrucks" />;
   };
 
   handleChange = selectedOption => {
@@ -80,7 +80,7 @@ export default class Foodtrucks extends Component {
     let foodTruck;
     if (this.props.info.vendors) {
       const truck = Object.entries(this.props.info.vendors);
-      truck.length = 10;
+    //   truck.length = 10;
       foodTruck = truck.map(array => {
         let logo = unavailable;
         if (array[1].images) logo = array[1].images.logo;
@@ -97,20 +97,25 @@ export default class Foodtrucks extends Component {
           console.log(typeof array[1].open[0].start);
 
           let start = new Date(array[1].open[0].start * 1000);
-          console.log(start);
+        //   console.log(start);
           startHours = start.getHours();
           let end = new Date(array[1].open[0].end * 1000);
           endHours = end.getHours();
         } else {
-          let date = new Date(array[1].last.time * 1000);
-          hours = date.getHours();
+            // console.log(array[1].last);
+            if(array[1].last) {
+                let date = new Date(array[1].last.time * 1000);
+                hours = date.getHours();
+            }
+            else {
+                hours="hours unavailable";
+            }
         }
 
         return (
           // OG stucture
           <div className="foodtrucks">
             <div className="foodtrucks__card">
-              <div className="foodtrucks__card-favorite">Favorite:</div>
               <div className="foodtrucks__card-segment">
                 <a
                   href="#"
@@ -118,9 +123,8 @@ export default class Foodtrucks extends Component {
                   onClick={this.handleOpenModal}
                 >
                   <Link
-                    to={`/foodtrucks/${array[1].identifier}`}
+                    to={`/alltrucks/${array[1].identifier}`}
                     key={array[1].identifier}
-                    className="foodtrucks__card-segment-name"
                   >
                     {array[1].name}
                   </Link>
@@ -137,13 +141,14 @@ export default class Foodtrucks extends Component {
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[1].last.display}
+
+                  {array[1].last && array[1].last.display}
                 </h4>
-                <p className="foodtrucks__card-segment-hours">
+                <h4 className="foodtrucks__card-segment-hours">
                   {startHours
-                    ? `Hours: ${startHours} to ${endHours}`
-                    : `Hours: ${hours} --`}
-                </p>
+                    ? `Open ${startHours} to ${endHours}`
+                    : `Open: ${hours} --`}
+                </h4>
               </div>
               <div className="foodtrucks__card-segment">
                 <p className="foodtrucks__card-segment-description">
@@ -157,7 +162,7 @@ export default class Foodtrucks extends Component {
               contentLabel="Minimal Modal Example"
             >
               <Route
-                path={`/foodtrucks/:identifier`}
+                path={`/alltrucks/:identifier`}
                 render={routerProps => (
                   <Details
                     vendors={this.state.filteredData}

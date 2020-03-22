@@ -105,12 +105,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.map__image {
-  width: 15rem;
-  height: 7rem;
-  border-radius: 2px;
+  border: 4px solid black;
 }
 
 @media only screen and (min-width: 768px) {
@@ -150,6 +145,10 @@
   height: 100%;
   width: 100%;
   margin: 16px 0;
+  border: 1px solid black;
+  -webkit-box-shadow: 5px 10px #888888;
+          box-shadow: 5px 10px #888888;
+  border-radius: 4px;
 }
 
 .foodtrucks .foodtrucks__card-segment {
@@ -160,15 +159,18 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 100%;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
 .foodtrucks .foodtrucks__card-segment-name {
   font-size: 14px;
   line-height: 16px;
+  color: inherit;
 }
 
 .foodtrucks .foodtrucks__card-segment-logo {
-  width: 7rem;
+  width: 5rem;
   height: 5rem;
   -o-object-fit: cover;
      object-fit: cover;
@@ -185,6 +187,86 @@
   height: 3rem;
   font-size: 12px;
   line-height: 14px;
+  margin-left: 1rem;
+}
+
+.details {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.details .details__card {
+  height: 100%;
+  width: 100%;
+}
+
+.details .details__card-segment {
+  margin-bottom: 1rem;
+}
+
+.details .details__card-segment-name {
+  height: 100%;
+  font-family: Popsicle;
+  font-size: 14px;
+  line-height: 16px;
+  color: inherit;
+}
+
+.details .details__card-segment-logo {
+  width: 10rem;
+  height: 5rem;
+  border-radius: 4px;
+}
+
+.details .details__card-segment-address, .details .details__card-segment-hours, .details .details__card-segment-phone, .details .details__card-segment-website, .details .details__card-segment-email, .details .details__card-segment-payment, .details .details__card-segment-rank {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.details .details__card-segment-description {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .details__card-segment {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .details__card-segment-name {
+    height: 100%;
+    font-size: 32px;
+    line-height: 36px;
+    color: inherit;
+  }
+  .details__card-segment-logo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 4px;
+  }
+  .details__card-segment-address {
+    height: 3rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .details__card-segment-hours, .details__card-segment-phone, .details__card-segment-website, .details__card-segment-payment, .details__card-segment-rank {
+    height: 3rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .details__card-segment-description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 1rem;
+  }
 }
 
 .roulette {
