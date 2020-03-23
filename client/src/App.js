@@ -3,25 +3,20 @@ import "./styles/main.css";
 import axios from "axios";
 import Header from "./components/Header";
 import Map from "./components/Map";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import NewTrucks from './components/NewTrucks';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NewTrucks from "./components/NewTrucks";
 import Foodtrucks from "./components/Foodtrucks";
 import AllTrucks from "./components/AllTrucks";
 import Details from "./components/Details";
 // import Roulettes from "./components/Roulettes";
-
-
-
-
 
 class App extends Component {
   state = {
     info: undefined
   };
 
-  
   // API_KEY
-// const apiKey = "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo";
+  // const apiKey = "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo";
 
   componentDidMount() {
     axios
@@ -36,20 +31,19 @@ class App extends Component {
       });
   }
 
-
-
   render() {
-    if(!this.state.info) return <h1> Loading..</h1>
+    if (!this.state.info) return <h1> Loading..</h1>;
 
     return (
       <Router className="App">
         <Header />
-        <Map info={this.state.info.vendors} />
+        {/* <Map info={this.state.info.vendors} /> */}
 
         {/* <TruckMap info={this.state.info.vendors} /> */}
 
         <Switch>
           <Route
+            
             path={`/new`}
             render={routerProps => (
               <NewTrucks info={this.state.info} {...routerProps} />
@@ -57,17 +51,18 @@ class App extends Component {
           />
 
           <Route
-            path={`/`}
-            exact
-            render={routerProps => (
-              <Foodtrucks info={this.state.info} {...routerProps} exact={'/'} />
-            )}
-          />
-
-          <Route
+            
             path={`/alltrucks`}
             render={routerProps => (
               <AllTrucks info={this.state.info} {...routerProps} />
+              )}
+          />
+
+          <Route
+            
+            path={`/`}
+            render={routerProps => (
+              <Foodtrucks info={this.state.info} {...routerProps}  />
             )}
           />
         </Switch>

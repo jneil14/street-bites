@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Apple-Butter";
+  src: url("../assets/font/AppleButter.ttf");
+}
+
 .header {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -17,9 +22,10 @@
 
 .header__logo-actual {
   width: 7rem;
-  height: 6rem;
+  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  margin: 1rem;
 }
 
 .header__line {
@@ -63,7 +69,7 @@
 
 @media only screen and (min-width: 1440px) {
   .header {
-    height: 21vh;
+    height: 100%;
   }
   .header__logo {
     display: -webkit-box;
@@ -77,20 +83,19 @@
             align-items: center;
     width: 100%;
     height: 100%;
-    margin: 1rem;
   }
   .header__logo-actual {
-    width: 17rem;
+    width: 18rem;
     height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    margin: 0;
   }
   .header__line-foodtruck {
     width: 3rem;
     height: 2.5rem;
+    margin-right: 1rem;
   }
   .header__line-distance {
-    width: 82rem;
+    width: 95vw;
   }
 }
 
@@ -105,7 +110,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 4px solid black;
+  border: 2px solid black;
 }
 
 @media only screen and (min-width: 768px) {
@@ -131,8 +136,14 @@
   }
 }
 
-.select {
-  margin: 1rem;
+@font-face {
+  font-family: "Apple-Butter";
+  src: url("../assets/font/AppleButter.ttf");
+}
+
+.options__featured, .options__new, .options__all {
+  color: inherit;
+  text-decoration: none;
 }
 
 .foodtrucks {
@@ -163,7 +174,8 @@
   padding-right: .5rem;
 }
 
-.foodtrucks .foodtrucks__card-segment-name {
+.foodtrucks .foodtrucks__card-segment a, .foodtrucks .foodtrucks__card-segment-name {
+  font-family: Apple-Butter;
   font-size: 14px;
   line-height: 16px;
   color: inherit;
@@ -188,6 +200,37 @@
   font-size: 12px;
   line-height: 14px;
   margin-left: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .select {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 8rem;
+    margin-top: 2rem;
+  }
+  .foodtrucks {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .select {
+    margin-left: 11.5rem;
+    margin-right: 11.5rem;
+    margin-bottom: 10rem;
+    margin-top: 3rem;
+  }
+  .foodtrucks {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+}
+
+@font-face {
+  font-family: "Apple-Butter";
+  src: url("../assets/font/AppleButter.ttf");
 }
 
 .details {

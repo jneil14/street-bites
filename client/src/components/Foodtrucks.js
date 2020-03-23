@@ -4,8 +4,9 @@ import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
+import Map from "./Map";
 
-const options = [
+const options = [ 
   { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
   { value: "new", label: <Link to={"/new"} className="options__new"> New </Link> },
   { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> }
@@ -55,9 +56,11 @@ export default class Foodtrucks extends Component {
     console.log("Selected option: ", selectedOption);
   };
 
+
   render() {
     const { selectedOption } = this.state;
-
+    let sortedTruckRank; 
+    let topVendors;
 //   const newTrucks = this.state.filteredData.metadata.new;
 //   console.log("filtered", newTrucks);
 //   const vendors_entries = Object.entries(this.state.filteredData.vendors);
@@ -79,30 +82,65 @@ export default class Foodtrucks extends Component {
 
     let foodTruck;
     if (this.props.info.vendors) {
-      const truck = Object.entries(this.props.info.vendors);
-      truck.length = 10;
-      foodTruck = truck.map(array => {
+      let truck = Object.entries(this.props.info.vendors);
+      // truck.length = 10;
+      truck = truck.filter(array => array[1].rank < 11)
+     
+    let truckRankObj = []
+     let truckRank = truck.map((array, index) => {
+       truckRankObj.push([array[1].rank, array[1]]);
+        return [array[1].rank]
+      })
+      console.log(
+        truckRank.sort(function(a, b) {
+          return a - b;
+        })
+      );
+      sortedTruckRank = truckRank.map(rank => {
+        let truckRankArray = []
+        truckRankObj.forEach(truck => {
+          
+          if (truck[0] === rank[0]) {
+            truckRankArray.push(truck)
+          }
+        }) 
+        return truckRankArray;
+      })
+      topVendors = sortedTruckRank.map(array => {
+        return array[0][1]
+      })
+      console.log(topVendors);
+console.log(truckRankObj);
+console.log(sortedTruckRank);
+      foodTruck = sortedTruckRank.map((array, index)=> {
+        console.log(array[0][1])
         let logo = unavailable;
-        if (array[1].images) logo = array[1].images.logo;
+        if (array[0][1].images) logo = array[0][1].images.logo;
 
         let description = "";
-        if (array[1].description_short)
-          description = array[1].description_short;
-        else description = array[1].description;
+        if (array[0][1].description_short)
+          description = array[0][1].description_short;
+        else description = array[0][1].description;
 
         let hours = "";
         let startHours = "";
         let endHours = "";
-        if (array[1].open.length !== 0) {
-          console.log(typeof array[1].open[0].start);
+        if (array[0][1].open.length !== 0) {
+          console.log(typeof array[0][1].open[0].start);
 
-          let start = new Date(array[1].open[0].start * 1000);
+          // array[1].open.map(time => {
+          //   let start = new Date(time.start);
+          //   startHours = start.getHours();
+          //   let end = new Date(time.end);
+          //   endHours = end.getHours();
+          // })
+          let start = new Date(array[0][1].open[0].start * 1000);
           console.log(start);
           startHours = start.getHours();
-          let end = new Date(array[1].open[0].end * 1000);
+          let end = new Date(array[0][1].open[0].end * 1000);
           endHours = end.getHours();
         } else {
-          let date = new Date(array[1].last.time * 1000);
+          let date = new Date(array[0][1].last.time * 1000);
           hours = date.getHours();
         }
 
@@ -118,11 +156,11 @@ export default class Foodtrucks extends Component {
                   onClick={this.handleOpenModal}
                 >
                   <Link
-                    to={`/foodtrucks/${array[1].identifier}`}
-                    key={array[1].identifier}
+                    to={`/foodtrucks/${array[0][1].identifier}`}
+                    key={array[0][1].identifier}
                     className="foodtrucks__card-segment-name"
                   >
-                    {array[1].name}
+                    {array[0][1].name}
                   </Link>
                   {/* <Switch>
                     <Route path={`/foodtrucks/:identifier`} component={Details} />
@@ -137,7 +175,7 @@ export default class Foodtrucks extends Component {
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[1].last.display}
+                  {array[0][1].last.display}
                 </h4>
                 <p className="foodtrucks__card-segment-hours">
                   {startHours
@@ -157,7 +195,9 @@ export default class Foodtrucks extends Component {
               contentLabel="Minimal Modal Example"
             >
               <Route
+                exact
                 path={`/foodtrucks/:identifier`}
+                // path={this.state.path}
                 render={routerProps => (
                   <Details
                     vendors={this.state.filteredData}
@@ -174,6 +214,7 @@ export default class Foodtrucks extends Component {
 
     return (
       <>
+        <Map info={topVendors} />
         <Select
           className="select"
           value={selectedOption}

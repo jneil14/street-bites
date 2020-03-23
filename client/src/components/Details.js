@@ -79,7 +79,7 @@ const MapMarker = withScriptjs(
     return (
       <GoogleMap
         defaultZoom={8}
-        defaultCenter={{ lat: 49.246292, lng: -123.116226 }}
+        defaultCenter={{ lat: 49.267132, lng: -122.968941 }}
         className="map"
       >
         {/* {Object.keys(props.markers).map(marker => {
@@ -88,14 +88,14 @@ const MapMarker = withScriptjs(
         <Marker
           key={"name"}
           // onClick={onClick}
-          position= {props.position}
+          position={props.position}
           icon={{
             url: truckMarker,
             scaledSize: new window.google.maps.Size(40, 40)
           }}
         >
           {/* {props.selectedMarker === props.markers[marker] && ( */}
-            {/* <InfoWindow>
+          {/* <InfoWindow>
               <div className="selected__marker">
                 <h4 className="selected__marker-name">
                   {"name"}
@@ -107,7 +107,6 @@ const MapMarker = withScriptjs(
               </div>
             </InfoWindow> */}
         </Marker>
-        
       </GoogleMap>
     );
   })
@@ -116,18 +115,18 @@ const MapMarker = withScriptjs(
 
 
 const Details = ({ vendors, match, closeModalNow }) => {
-  console.log(match);
+  
 
   let actualVendors = [];
   let vendorsSet = false;
 
   if (vendors !== undefined) {
     // actualVendors = [vendors.vendors];
-    console.log("vendors.vendors", vendors.vendors);
+    // console.log("vendors.vendors", vendors.vendors);
     for (let item in vendors.vendors) {
       actualVendors.push(vendors.vendors[item]);
     }
-    console.log("actual vendors", actualVendors);
+    // console.log("actual vendors", actualVendors);
     vendorsSet = true;
   }
 
@@ -251,6 +250,8 @@ const Details = ({ vendors, match, closeModalNow }) => {
                 </div>
               </div>
             </div>
+            <div className="details__map">
+
             {
               <MapMarker
                 className="map"
@@ -263,15 +264,16 @@ const Details = ({ vendors, match, closeModalNow }) => {
                 containerElement={
                   <div
                     style={{
-                      height: `300px`,
+                      height: `150px`,
                       border: `1px solid grey `,
-                      margin: `1rem`
+                      // margin: `1rem`
                     }}
                   />
                 }
                 mapElement={<div style={{ height: `100%` }} />}
               />
             }
+            </div>
           </>
         );
       } else {

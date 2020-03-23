@@ -98,15 +98,17 @@ export default class Map extends Component {
     }
     render() {
         return (
-          <MapMarker className="map"
-            selectedMarker={this.state.selectedMarker}
-            markers={this.props.info}
-            onClick={this.handleClick}
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px`, border: `1px solid grey `, margin: `1rem` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-          />
+          <div className="map">
+              <MapMarker className="map"
+                selectedMarker={this.state.selectedMarker}
+                markers={this.props.info}
+                onClick={this.handleClick}
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ width: `100%`, height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+              />
+          </div>
         );
     }
 }

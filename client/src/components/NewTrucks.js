@@ -4,11 +4,12 @@ import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
+import Map from './Map';
 
 const options = [
-  { value: "featured", label: "Featured" },
-  { value: "new", label: "New" },
-  { value: "all", label: "All" }
+  { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
+  { value: "new", label: <Link to={"/new"} className="options__new"> New </Link> },
+  { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> }
 ];
 export default class NewTrucks extends Component {
   constructor(props) {
@@ -57,9 +58,9 @@ export default class NewTrucks extends Component {
 
   render() {
     const { selectedOption } = this.state;
-
+    let newVendors;
     const newTrucks = this.state.filteredData.metadata.new;
-    console.log("New Food Trucks", newTrucks);
+    // console.log("New Food Trucks", newTrucks);
 
 
     // const trucksNew = this.state.filteredData.metadata.new;
@@ -74,9 +75,9 @@ export default class NewTrucks extends Component {
 
 
      const newList = this.state.filteredData.metadata.new;
-     console.log("filtered", newList);
+    //  console.log("filtered", newList);
      const vendorsEntries = Object.entries(this.state.filteredData.vendors);
-     console.log("vendors", vendorsEntries);
+    //  console.log("vendors", vendorsEntries);
      console.log(vendorsEntries[0][1]);
      const newNames = newList.map(truck => {
        return vendorsEntries.filter(arr => {
@@ -95,12 +96,15 @@ export default class NewTrucks extends Component {
 
     
 console.log(newNames[0][0][1]);
+newVendors = newNames.map(array => {
+    return array[0]["1"]
+})
 
     // if (newTrucks === this.props.info.vendors.name) {
     //   const truck = Object.entries(this.props.info.vendors);
       
       foodTruck = newNames.map((array, index) => {
-          console.log(array[0]["1"]);
+        //   console.log(array[0]["1"]);
         let logo = unavailable;
         if (array[0]["1"].images) logo = array[0]["1"].images.logo;
 
@@ -199,6 +203,7 @@ console.log(newNames[0][0][1]);
     
     return (
       <>
+        <Map info={newVendors} />
         <Select
           className="select"
           value={selectedOption}

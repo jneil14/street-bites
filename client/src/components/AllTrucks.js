@@ -4,6 +4,7 @@ import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
+import Map from "./Map";
 
 const options = [
   { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
@@ -94,7 +95,7 @@ export default class AllTrucks extends Component {
         let startHours = "";
         let endHours = "";
         if (array[1].open.length !== 0) {
-          console.log(typeof array[1].open[0].start);
+          
 
           let start = new Date(array[1].open[0].start * 1000);
         //   console.log(start);
@@ -141,7 +142,6 @@ export default class AllTrucks extends Component {
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-
                   {array[1].last && array[1].last.display}
                 </h4>
                 <h4 className="foodtrucks__card-segment-hours">
@@ -179,6 +179,7 @@ export default class AllTrucks extends Component {
 
     return (
       <>
+        <Map info={this.state.filteredData.vendors} />
         <Select
           className="select"
           value={selectedOption}

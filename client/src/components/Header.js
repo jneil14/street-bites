@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo/logo.png';
+import logo from '../assets/logo/SBlogo.png';
 import person from "../assets/icons/person.png";
 import foodtruck from "../assets/icons/food truck.png";
 import distance from '../assets/icons/line.png';
