@@ -4,11 +4,25 @@
     
 }
 
-// @font-face {
-//   font-family: Popsicle;
-//   src: url("../../assets/font/KR\ Popsicle.ttf")
-// }
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf")
+}
 
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf")
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf")
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur\ DEMO.otf")
+}
 
 // @mixin mobile-header {
 //   font-size: 1.5rem;

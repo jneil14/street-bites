@@ -3,7 +3,7 @@ import Roulette from 'react-roulette';
 
 function Roulettes () {
     const items = [ "Food truck 1", "Food truck 2", "Food truck 3", "Food truck 4", "Food truck 5" ];
-    const colors = ["#F76156", "#FBD1A2", "#BED558", "#F76156", "#FBD1A2"]; 
+    const colors = ["#808000", "#FBD1A2", "#BED558", "#F76156", "#008080"]; 
 
   const handleRouletteChange =(foodtruck) => {
     console.log(foodtruck);
@@ -27,24 +27,19 @@ function Roulettes () {
           <div className="roulette__selected">
             <ol className="roulette__selected-list">
               <a href="#">
-                
-                <li> </li>
+                <li className="roulette__selected-list-one"> </li>
               </a>
               <a href="#">
-                
-                <li> </li>
+                <li className="roulette__selected-list-two"> </li>
               </a>
               <a href="#">
-                
-                <li> </li>
+                <li className="roulette__selected-list-three"> </li>
               </a>
               <a href="#">
-                
-                <li> </li>
+                <li className="roulette__selected-list-four"> </li>
               </a>
               <a href="#">
-                
-                <li> </li>
+                <li className="roulette__selected-list-five"> </li>
               </a>
             </ol>
           </div>

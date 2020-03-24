@@ -7,7 +7,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewTrucks from "./components/NewTrucks";
 import Foodtrucks from "./components/Foodtrucks";
 import AllTrucks from "./components/AllTrucks";
+import Favorites from "./components/Favorites";
 import Details from "./components/Details";
+
 // import Roulettes from "./components/Roulettes";
 
 class App extends Component {
@@ -43,7 +45,6 @@ class App extends Component {
 
         <Switch>
           <Route
-            
             path={`/new`}
             render={routerProps => (
               <NewTrucks info={this.state.info} {...routerProps} />
@@ -51,18 +52,23 @@ class App extends Component {
           />
 
           <Route
-            
             path={`/alltrucks`}
             render={routerProps => (
               <AllTrucks info={this.state.info} {...routerProps} />
-              )}
+            )}
           />
 
           <Route
-            
             path={`/`}
             render={routerProps => (
-              <Foodtrucks info={this.state.info} {...routerProps}  />
+              <Foodtrucks info={this.state.info} {...routerProps} exact />
+            )}
+          />
+
+          <Route
+            path={`/favorites`}
+            render={routerProps => (
+              <Favorites info={this.state.info} {...routerProps} />
             )}
           />
         </Switch>

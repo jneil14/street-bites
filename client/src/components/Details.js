@@ -13,6 +13,9 @@ import {
 } from "react-google-maps";
 import GoogleMapReact from 'google-map-react';
 import truckMarker from "../assets/logo/truck-marker.png";
+import favoriteIcon from "../assets/icons/favorite.png";
+import axios from "axios";
+
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 // export default class Details extends Component {
@@ -72,6 +75,19 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 //         );
 //     }
 // }
+
+const saveFavorites = (event, identifier) => {
+  axios.post("http://localhost:5000/api/favorites", {identifier}).then(
+    respond => {
+      console.log(respond.data)
+      if(!respond.data) {
+        console.log("Food truck is saved already!")
+      }
+    
+    }  
+  )
+} 
+
 
 
 const MapMarker = withScriptjs(
@@ -203,6 +219,7 @@ const Details = ({ vendors, match, closeModalNow }) => {
             {/* <Map /> */}
             <div className="details">
               <div className="details__card">
+                <button onClick={(event) => saveFavorites(event, truck.identifier)} className="details__fav-btn">favoriteIcon</button>
                 <div className="details__card-segment">
                   <h3 className="details__card-segment-name">{truck.name}</h3>
                   <img

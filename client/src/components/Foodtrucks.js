@@ -5,11 +5,37 @@ import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
 import Map from "./Map";
+import Favorites from './Favorites'
 
-const options = [ 
-  { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
-  { value: "new", label: <Link to={"/new"} className="options__new"> New </Link> },
-  { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> }
+const options = [
+  {
+    value: "featured",
+    label: (
+      <Link to={"/"} className="options__featured">
+        {" "}
+        Featured{" "}
+      </Link>
+    )
+  },
+  {
+    value: "new",
+    label: (
+      <Link to={"/new"} className="options__new">
+        {" "}
+        New{" "}
+      </Link>
+    )
+  },
+  {
+    value: "all",
+    label: (
+      <Link to={"/alltrucks"} className="options__all">
+        {" "}
+        All{" "}
+      </Link>
+    )
+  },
+  {value: "favorites", label: (<Link to={"/favorites"} className="options__favorites">Favorites</Link>)}
 ];
 export default class Foodtrucks extends Component {
   constructor(props) {
@@ -56,22 +82,48 @@ export default class Foodtrucks extends Component {
     console.log("Selected option: ", selectedOption);
   };
 
+  // handleFavFoodTruck = () => {
+
+    // ------------------
+    // Express JSON option
+    // create a get request endpoint to read from a json file in express
+    // the get request would be in the Favourites.js file not here!
+    // axios.get('/api/favourites')...
+
+    // to post a fav, this endpoint would handle writing to a json file is express
+    // see BrainFlix or BrainBooks
+    // axios.post('/api/favourites', {data})...
+
+    // ------------------
+    // Local Storage Option
+    // on click of the button, you will need to get the food truck id or name-slug identifier
+    // then from the array the object containing all food trucks, try to filter and only get the one matching the id.
+    // take a look at how you did this with the food truck single in the modal
+
+    // once you find the food truck, single object set localstorage to use this data
+
+    // favourites is what the variable in localStorage is set as.
+    // localStorage.setItem("favourites", JSON.stringify(foundObject));
+
+    // in Favourites.js you can load the data e.g. 
+    // localStorage.getItem("favourites");
+  // };
 
   render() {
     const { selectedOption } = this.state;
-    let sortedTruckRank; 
+    let sortedTruckRank;
     let topVendors;
-//   const newTrucks = this.state.filteredData.metadata.new;
-//   console.log("filtered", newTrucks);
-//   const vendors_entries = Object.entries(this.state.filteredData.vendors);
-//   console.log("vendors", vendors_entries);
-// console.log(vendors_entries[0][1]);
-//  const newNames =  newTrucks.map(truck => {
-//     return vendors_entries.filter(arr => {
-//       return arr[1].identifier === truck;
-//     })
-//   });
-// console.log(newNames);
+    //   const newTrucks = this.state.filteredData.metadata.new;
+    //   console.log("filtered", newTrucks);
+    //   const vendors_entries = Object.entries(this.state.filteredData.vendors);
+    //   console.log("vendors", vendors_entries);
+    // console.log(vendors_entries[0][1]);
+    //  const newNames =  newTrucks.map(truck => {
+    //     return vendors_entries.filter(arr => {
+    //       return arr[1].identifier === truck;
+    //     })
+    //   });
+    // console.log(newNames);
 
     // check if info props is loading
     if (!undefined) {
@@ -84,36 +136,35 @@ export default class Foodtrucks extends Component {
     if (this.props.info.vendors) {
       let truck = Object.entries(this.props.info.vendors);
       // truck.length = 10;
-      truck = truck.filter(array => array[1].rank < 11)
-     
-    let truckRankObj = []
-     let truckRank = truck.map((array, index) => {
-       truckRankObj.push([array[1].rank, array[1]]);
-        return [array[1].rank]
-      })
+      truck = truck.filter(array => array[1].rank < 11);
+
+      let truckRankObj = [];
+      let truckRank = truck.map((array, index) => {
+        truckRankObj.push([array[1].rank, array[1]]);
+        return [array[1].rank];
+      });
       console.log(
         truckRank.sort(function(a, b) {
           return a - b;
         })
       );
       sortedTruckRank = truckRank.map(rank => {
-        let truckRankArray = []
+        let truckRankArray = [];
         truckRankObj.forEach(truck => {
-          
           if (truck[0] === rank[0]) {
-            truckRankArray.push(truck)
+            truckRankArray.push(truck);
           }
-        }) 
+        });
         return truckRankArray;
-      })
+      });
       topVendors = sortedTruckRank.map(array => {
-        return array[0][1]
-      })
+        return array[0][1];
+      });
       console.log(topVendors);
-console.log(truckRankObj);
-console.log(sortedTruckRank);
-      foodTruck = sortedTruckRank.map((array, index)=> {
-        console.log(array[0][1])
+      console.log(truckRankObj);
+      console.log(sortedTruckRank);
+      foodTruck = sortedTruckRank.map((array, index) => {
+        console.log(array[0][1]);
         let logo = unavailable;
         if (array[0][1].images) logo = array[0][1].images.logo;
 
@@ -148,7 +199,12 @@ console.log(sortedTruckRank);
           // OG stucture
           <div className="foodtrucks">
             <div className="foodtrucks__card">
-              <div className="foodtrucks__card-favorite">Favorite:</div>
+              {/* <button
+                // onClick={handleFavFoodTruck}
+                className="foodtrucks__card-favorite"
+              >
+                Favorite:
+              </button> */}
               <div className="foodtrucks__card-segment">
                 <a
                   href="#"
@@ -226,5 +282,3 @@ console.log(sortedTruckRank);
     );
   }
 }
-
-

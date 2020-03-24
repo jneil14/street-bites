@@ -8,6 +8,7 @@ import {
   InfoWindow
 } from "react-google-maps";
 import truckMarker from "../assets/logo/truck-marker.png";
+import unavailable from "../assets/logo/unavailable.jpg";
 
 const MapMarker = withScriptjs(
   withGoogleMap(props => {
@@ -40,6 +41,8 @@ const MapMarker = withScriptjs(
               {props.selectedMarker === props.markers[marker] && (
                 <InfoWindow>
                   <div className="selected__marker">
+                    {/* <img className="foodtrucks__card-segment-logo" src={logo ? logo : unavailable}
+                  alt="food truck logo" /> */}
                     <h4 className="selected__marker-name">
                       {props.markers[marker].name}
                     </h4>

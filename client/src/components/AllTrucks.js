@@ -5,11 +5,13 @@ import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
 import Map from "./Map";
+import Favorites from "./Favorites";
 
 const options = [
   { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
   { value: "new", label: <Link to={"/new"} className="options__new"> New </Link> },
-  { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> }
+  { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> },
+  {value: "favorites", label: (<Link to={"/favorites"} className="options__favorites">Favorites</Link>)}
 ];
 export default class AllTrucks extends Component {
   constructor(props) {

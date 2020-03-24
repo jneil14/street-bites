@@ -2,8 +2,10 @@
 @import './fonts';
 
 
-
-.options__featured, .options__new, .options__all {
+.select {
+    margin: 0 16px;
+}
+.options__featured, .options__new, .options__all, .options__favorites {
     color: inherit;
     text-decoration: none;
 }
@@ -33,8 +35,8 @@
 
             a, &-name {
                 font-family: Apple-Butter;
-                font-size: 14px;
-                line-height: 16px;
+                font-size: 24px;
+                line-height: 32px;
                 // text-decoration: none;
                 color: inherit;
             }
@@ -45,18 +47,18 @@
                 border-radius: 4px;
             }
             &-address {
-                height: 3rem;
+                font-family: Provo;
                 font-size: 12px;
                 line-height: 14px;
             }
             &-hours {
-                height: 3rem;
+                font-family: Provo;
                 font-size: 12px;
                 line-height: 14px;
                 margin-left: 1rem;
             }
             &-description {
-
+                font-family: Provo;
             }
         }
 }

@@ -3,4 +3,45 @@
 .roulette {
     display: block;
 
+    .roulette__output-result {
+        border: 1px solid black;
+
+    }
+
+    .roulette__selected-list {
+       
+        a .roulette__selected-list-one{
+            height: 3rem;
+            width: 5rem;
+            background-color: #808000;
+            margin-bottom: 1rem;
+        }
+        a .roulette__selected-list-two {
+            height: 3rem;
+            width: 5rem;
+            background-color: #FBD1A2;
+            margin-bottom: 1rem;
+        }
+        a .roulette__selected-list-three {
+            height: 3rem;
+            width: 5rem;
+            background-color: #BED558;
+            margin-bottom: 1rem;
+        }
+        a .roulette__selected-list-four{
+            height: 3rem;
+            width: 5rem;
+            background-color: #F76156;
+            margin-bottom: 1rem;
+        }
+       a .roulette__selected-list-five {
+            height: 3rem;
+            width: 5rem;
+            background-color: #008080;
+            margin-bottom: 1rem;
+        }
+    }
+
 }
+
+

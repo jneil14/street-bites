@@ -3,6 +3,26 @@
   src: url("../assets/font/AppleButter.ttf");
 }
 
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf");
+}
+
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf");
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf");
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur DEMO.otf");
+}
+
 .header {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -141,7 +161,31 @@
   src: url("../assets/font/AppleButter.ttf");
 }
 
-.options__featured, .options__new, .options__all {
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf");
+}
+
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf");
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf");
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur DEMO.otf");
+}
+
+.select {
+  margin: 0 16px;
+}
+
+.options__featured, .options__new, .options__all, .options__favorites {
   color: inherit;
   text-decoration: none;
 }
@@ -176,8 +220,8 @@
 
 .foodtrucks .foodtrucks__card-segment a, .foodtrucks .foodtrucks__card-segment-name {
   font-family: Apple-Butter;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 24px;
+  line-height: 32px;
   color: inherit;
 }
 
@@ -190,16 +234,20 @@
 }
 
 .foodtrucks .foodtrucks__card-segment-address {
-  height: 3rem;
+  font-family: Provo;
   font-size: 12px;
   line-height: 14px;
 }
 
 .foodtrucks .foodtrucks__card-segment-hours {
-  height: 3rem;
+  font-family: Provo;
   font-size: 12px;
   line-height: 14px;
   margin-left: 1rem;
+}
+
+.foodtrucks .foodtrucks__card-segment-description {
+  font-family: Provo;
 }
 
 @media only screen and (min-width: 768px) {
@@ -233,6 +281,26 @@
   src: url("../assets/font/AppleButter.ttf");
 }
 
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf");
+}
+
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf");
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf");
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur DEMO.otf");
+}
+
 .details {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -249,7 +317,7 @@
 
 .details .details__card-segment-name {
   height: 100%;
-  font-family: Popsicle;
+  font-family: Apple-Butter;
   font-size: 14px;
   line-height: 16px;
   color: inherit;
@@ -314,6 +382,45 @@
 
 .roulette {
   display: block;
+}
+
+.roulette .roulette__output-result {
+  border: 1px solid black;
+}
+
+.roulette .roulette__selected-list a .roulette__selected-list-one {
+  height: 3rem;
+  width: 5rem;
+  background-color: #808000;
+  margin-bottom: 1rem;
+}
+
+.roulette .roulette__selected-list a .roulette__selected-list-two {
+  height: 3rem;
+  width: 5rem;
+  background-color: #FBD1A2;
+  margin-bottom: 1rem;
+}
+
+.roulette .roulette__selected-list a .roulette__selected-list-three {
+  height: 3rem;
+  width: 5rem;
+  background-color: #BED558;
+  margin-bottom: 1rem;
+}
+
+.roulette .roulette__selected-list a .roulette__selected-list-four {
+  height: 3rem;
+  width: 5rem;
+  background-color: #F76156;
+  margin-bottom: 1rem;
+}
+
+.roulette .roulette__selected-list a .roulette__selected-list-five {
+  height: 3rem;
+  width: 5rem;
+  background-color: #008080;
+  margin-bottom: 1rem;
 }
 
 html, body {
