@@ -6,6 +6,7 @@ import ReactModal from "react-modal";
 import Details from "./Details";
 import Map from './Map';
 import Favorites from "./Favorites";
+import Roulettes from "./Roulettes";
 
 const options = [
   { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
@@ -20,7 +21,10 @@ export default class NewTrucks extends Component {
     this.state = {
       selectedOption: null,
       showModal: false,
-      filteredData: this.props.info
+      filteredData: this.props.info,
+      selectedTrucks: [],
+      selectedTrucksArray: [],
+      selectElements: true
       // info: []
       // details: [],
     };
@@ -38,7 +42,8 @@ export default class NewTrucks extends Component {
 
   componentDidMount() {
     this.setState({
-      filteredData: this.props.info
+      filteredData: this.props.info,
+      
     });
   }
 
@@ -57,6 +62,46 @@ export default class NewTrucks extends Component {
     this.setState({ selectedOption });
     console.log("Selected option: ", selectedOption);
   };
+
+  handleSelect = (event, index, vendor) => {
+      let tempArray = this.state.selectedTrucks
+      tempArray[index] = !tempArray[index];
+      let selectedTrucksArray = this.state.selectedTrucksArray;
+      if(tempArray[index]) {     
+      if(selectedTrucksArray.length < 6) {
+          selectedTrucksArray.push(vendor)
+          this.setState({
+            selectedTrucks: tempArray, 
+            selectedTrucksArray
+          }, () => console.log("adding trucks", [this.state.selectedTrucks, this.state.selectedTrucksArray]));
+          
+      }
+    
+     if (selectedTrucksArray.length === 5) {
+        // let selectElements = this.state.selectElements
+
+       this.setState({
+         selectElements: false
+       });
+     }
+    }
+    
+    else {
+        console.log("vendor", vendor)
+        let removedTrucksArray = selectedTrucksArray.filter(
+          selectedVendor =>
+            selectedVendor.identifier !== vendor.identifier
+        );
+        console.log(removedTrucksArray)
+        this.setState({
+          selectedTrucks: tempArray,
+          selectedTrucksArray: removedTrucksArray
+        },  () => {if(this.state.selectedTrucksArray.length < 5) this.setState({
+            selectElements: true
+        })});
+    }
+
+}
 
   render() {
     const { selectedOption } = this.state;
@@ -107,6 +152,7 @@ newVendors = newNames.map(array => {
       
       foodTruck = newNames.map((array, index) => {
         //   console.log(array[0]["1"]);
+        
         let logo = unavailable;
         if (array[0]["1"].images) logo = array[0]["1"].images.logo;
 
@@ -143,6 +189,20 @@ newVendors = newNames.map(array => {
           // OG stucture
           <div className="foodtrucks">
             <div className="foodtrucks__card">
+              {((this.state.selectElements || this.state.selectedTrucks[index]) && ((this.state.selectedTrucks.length === 0) || (this.state.selectedTrucks.length !== 0 || this.state.selectedTrucks[index]))) ?  <label>
+                <input
+                  type="checkbox"
+                  checked={
+                    this.state.selectedTrucks.length !== 0
+                      ? this.state.selectedTrucks[index]
+                      : false
+                  }
+                  onChange={event =>
+                    this.handleSelect(event, index, array[0][1])
+                  }
+                />
+                Select
+              </label>: "" }
               <div className="foodtrucks__card-segment">
                 <a
                   href="#"
@@ -213,6 +273,7 @@ newVendors = newNames.map(array => {
           options={options}
         />
         {foodTruck}
+        {!this.state.selectElements ? <Roulettes vendors={this.state.selectedTrucksArray} /> : ""}
       </>
     );
   }

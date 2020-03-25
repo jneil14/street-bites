@@ -53,12 +53,12 @@ export default class Foodtrucks extends Component {
   // getDerivedStateFromProps = (nextProps, prevState) => {
   //   console.log("nextProps", nextProps);
   // }
-  componentWillReceiveProps(prevProps, prevState) {
-    console.log("prevProps", prevProps);
-    this.setState({
-      filteredData: prevProps.info
-    });
-  }
+  // componentWillReceiveProps(prevProps, prevState) {
+  //   console.log("prevProps", prevProps);
+  //   this.setState({
+  //     filteredData: prevProps.info
+  //   });
+  // }
 
   componentDidMount() {
     this.setState({
@@ -68,7 +68,7 @@ export default class Foodtrucks extends Component {
 
   handleOpenModal = e => {
     e.preventDefault();
-    this.setState({ showModal: true });
+    this.setState({ showModal: true }, console.log("showModal"));
   };
 
   handleCloseModal = () => {
@@ -126,11 +126,11 @@ export default class Foodtrucks extends Component {
     // console.log(newNames);
 
     // check if info props is loading
-    if (!undefined) {
-      // return (<div>hey</div>)
-    } else {
-      return <p className="loading">Loading..</p>;
-    }
+    // if (!undefined) {
+    //   // return (<div>hey</div>)
+    // } else {
+    //   return <p className="loading">Loading..</p>;
+    // }
 
     let foodTruck;
     if (this.props.info.vendors) {
@@ -251,9 +251,8 @@ export default class Foodtrucks extends Component {
               contentLabel="Minimal Modal Example"
             >
               <Route
-                exact
+              exact
                 path={`/foodtrucks/:identifier`}
-                // path={this.state.path}
                 render={routerProps => (
                   <Details
                     vendors={this.state.filteredData}
@@ -263,6 +262,7 @@ export default class Foodtrucks extends Component {
                 )}
               />
             </ReactModal>
+
           </div>
         );
       });

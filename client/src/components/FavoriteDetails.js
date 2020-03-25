@@ -11,11 +11,10 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact from "google-map-react";
 import truckMarker from "../assets/logo/truck-marker.png";
 import favoriteIcon from "../assets/icons/favorite.png";
 import axios from "axios";
-
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 // export default class Details extends Component {
@@ -76,20 +75,6 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 //     }
 // }
 
-const saveFavorites = (event, identifier) => {
-  axios.post("http://localhost:5000/api/favorites", {identifier}).then(
-    respond => {
-      console.log(respond.data)
-      if(!respond.data) {
-        console.log("Food truck is saved already!")
-      }
-    
-    }  
-  )
-} 
-
-
-
 const MapMarker = withScriptjs(
   withGoogleMap(props => {
     return (
@@ -128,23 +113,19 @@ const MapMarker = withScriptjs(
   })
 );
 
-
-
 const Details = ({ vendors, match, closeModalNow }) => {
-  console.log(vendors)
+//   let actualVendors = [];
+//   let vendorsSet = false;
 
-  let actualVendors = [];
-  let vendorsSet = false;
-
-  if (vendors !== undefined) {
-    actualVendors = [vendors.vendors];
-    // console.log("vendors.vendors", vendors.vendors);
-    for (let item in vendors.vendors) {
-      actualVendors.push(vendors.vendors[item]);
-    }
-    // console.log("actual vendors", actualVendors);
-    vendorsSet = true;
-  }
+//   if (vendors !== undefined) {
+//     // actualVendors = [vendors.vendors];
+//     // console.log("vendors.vendors", vendors.vendors);
+//     for (let item in vendors.vendors) {
+//       actualVendors.push(vendors.vendors[item]);
+//     }
+//     // console.log("actual vendors", actualVendors);
+//     vendorsSet = true;
+//   }
 
   // let hours = "";
   // let startHours = "";
@@ -168,21 +149,21 @@ const Details = ({ vendors, match, closeModalNow }) => {
   //   hours = date.getHours();
   // }
 
-  console.log(actualVendors.length);
+  console.log(vendors.length);
 
   if (vendors !== undefined) {
-    if (vendors.vendors !== undefined) {
+    // if (vendors.vendors !== undefined) {
       console.log("params identifier", match.params.identifier);
-      console.log("actualVendors", actualVendors);
+    //   console.log("actualVendors", actualVendors);
 
-      const found = actualVendors.some(truck => {
+      const found = vendors.some(truck => {
         // console.log(truck.identifier == match.params.identifier);
         return truck.identifier == match.params.identifier;
       });
       // console.log("found", found);
 
       if (found) {
-        const truck = actualVendors
+        const truck = vendors
           .filter(truck => truck.identifier === match.params.identifier)
           .shift();
         // let truckImages = truck.images.header.map(image =>{
@@ -200,16 +181,13 @@ const Details = ({ vendors, match, closeModalNow }) => {
           let end = new Date(truck.open[0].end * 1000);
           endHours = end.getHours();
         } else {
-          if(truck.last) {
+          if (truck.last) {
             let date = new Date(truck.last.time * 1000);
             hours = date.getHours();
-          }
-          else {
+          } else {
             hours = "Hours not available";
           }
         }
-
-
 
         return (
           <>
@@ -219,7 +197,7 @@ const Details = ({ vendors, match, closeModalNow }) => {
             {/* <Map /> */}
             <div className="details">
               <div className="details__card">
-                <button onClick={(event) => saveFavorites(event, truck.identifier)} className="details__fav-btn">favoriteIcon</button>
+                
                 <div className="details__card-segment">
                   <h3 className="details__card-segment-name">{truck.name}</h3>
                   <img
@@ -268,35 +246,34 @@ const Details = ({ vendors, match, closeModalNow }) => {
               </div>
             </div>
             <div className="details__map">
-
-            {
-              <MapMarker
-                className="map"
-                position={{
-                  lat: truck.last.latitude,
-                  lng: truck.last.longitude
-                }}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={
-                  <div
-                    style={{
-                      height: `150px`,
-                      border: `1px solid grey `,
-                      // margin: `1rem`
-                    }}
-                  />
-                }
-                mapElement={<div style={{ height: `100%` }} />}
-              />
-            }
+              {
+                <MapMarker
+                  className="map"
+                  position={{
+                    lat: truck.last.latitude,
+                    lng: truck.last.longitude
+                  }}
+                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
+                  loadingElement={<div style={{ height: `100%` }} />}
+                  containerElement={
+                    <div
+                      style={{
+                        height: `150px`,
+                        border: `1px solid grey `
+                        // margin: `1rem`
+                      }}
+                    />
+                  }
+                  mapElement={<div style={{ height: `100%` }} />}
+                />
+              }
             </div>
           </>
         );
       } else {
         return <p>Truck not found</p>;
       }
-    }
+    // }
   } else {
     return <div>Loading</div>;
   }

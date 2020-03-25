@@ -10,7 +10,7 @@ import AllTrucks from "./components/AllTrucks";
 import Favorites from "./components/Favorites";
 import Details from "./components/Details";
 
-// import Roulettes from "./components/Roulettes";
+// import Roulettes from "./components/Roulettes
 
 class App extends Component {
   state = {
@@ -58,17 +58,17 @@ class App extends Component {
             )}
           />
 
-          <Route
-            path={`/`}
-            render={routerProps => (
-              <Foodtrucks info={this.state.info} {...routerProps} exact />
-            )}
-          />
 
           <Route
             path={`/favorites`}
             render={routerProps => (
               <Favorites info={this.state.info} {...routerProps} />
+            )}
+          />
+          <Route
+            path={`/`}
+            render={routerProps => (
+              <Foodtrucks info={this.state.info} {...routerProps} />
             )}
           />
         </Switch>
