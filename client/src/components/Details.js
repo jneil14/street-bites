@@ -281,13 +281,15 @@ const Details = ({ vendors, match, closeModalNow }) => {
                 containerElement={
                   <div
                     style={{
-                      height: `150px`,
+                      height: `250px`,
+                      width: `1500px`,
                       border: `1px solid grey `,
+                      margin: `auto`
                       // margin: `1rem`
                     }}
                   />
                 }
-                mapElement={<div style={{ height: `100%` }} />}
+                mapElement={<div style={{ height: `100%`}} />}
               />
             }
             </div>

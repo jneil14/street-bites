@@ -23,6 +23,31 @@
   src: url("../assets/font/Provokateur DEMO.otf");
 }
 
+@font-face {
+  font-family: "Arvo-Regular";
+  src: url("../assets/font/Arvo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../assets/font/Arvo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Regular";
+  src: url("../assets/font/CinzelDecorative-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Medium";
+  src: url("../assets/font/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Bold";
+  src: url("../assets/font/CinzelDecorative-Black.ttf");
+}
+
 .header {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -181,6 +206,31 @@
   src: url("../assets/font/Provokateur DEMO.otf");
 }
 
+@font-face {
+  font-family: "Arvo-Regular";
+  src: url("../assets/font/Arvo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../assets/font/Arvo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Regular";
+  src: url("../assets/font/CinzelDecorative-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Medium";
+  src: url("../assets/font/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Bold";
+  src: url("../assets/font/CinzelDecorative-Black.ttf");
+}
+
 .select {
   margin: 0 16px;
 }
@@ -199,11 +249,12 @@
 .foodtrucks .foodtrucks__card {
   height: 100%;
   width: 100%;
+  background-color: #FBF2DA;
   margin: 16px 0;
   border: 1px solid black;
   -webkit-box-shadow: 5px 10px #888888;
           box-shadow: 5px 10px #888888;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .foodtrucks .foodtrucks__card-segment {
@@ -219,47 +270,57 @@
 }
 
 .foodtrucks .foodtrucks__card-segment a, .foodtrucks .foodtrucks__card-segment-name {
-  font-family: Apple-Butter;
+  padding-top: .3rem;
+  font-family: CinzelDecorative-Medium;
   font-size: 24px;
   line-height: 32px;
-  color: inherit;
+  color: #D46240;
 }
 
 .foodtrucks .foodtrucks__card-segment-logo {
   width: 5rem;
   height: 5rem;
+  padding-top: .3rem;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 4px;
 }
 
 .foodtrucks .foodtrucks__card-segment-address {
-  font-family: Provo;
+  font-family: Arvo-Regular;
   font-size: 12px;
   line-height: 14px;
 }
 
 .foodtrucks .foodtrucks__card-segment-hours {
-  font-family: Provo;
+  font-family: Arvo-Regular;
   font-size: 12px;
   line-height: 14px;
   margin-left: 1rem;
 }
 
 .foodtrucks .foodtrucks__card-segment-description {
-  font-family: Provo;
+  font-family: Arvo-Regular;
 }
 
 @media only screen and (min-width: 768px) {
   .select {
     margin-left: 2rem;
     margin-right: 2rem;
-    margin-bottom: 8rem;
+    margin-bottom: 10rem;
     margin-top: 2rem;
   }
   .foodtrucks {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+  .foodtrucks .foodtrucks__card-segment-address {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .foodtrucks .foodtrucks__card-segment-hours, .foodtrucks .foodtrucks__card-segment-description {
+    font-size: 16px;
+    line-height: 18px;
   }
 }
 
@@ -273,6 +334,26 @@
   .foodtrucks {
     margin-left: 5rem;
     margin-right: 5rem;
+  }
+  .foodtrucks .checkbox {
+    height: 1.5rem;
+    width: 1.5rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .foodtrucks .foodtrucks__card-segment-logo {
+    width: 10rem;
+    height: 10rem;
+    padding-top: .5rem;
+    padding-right: .5rem;
+  }
+  .foodtrucks a, .foodtrucks .foodtrucks__card-segment-name, .foodtrucks .foodtrucks__card-segment-address {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .foodtrucks .foodtrucks__card-segment-hours, .foodtrucks .foodtrucks__card-segment-description {
+    font-size: 24px;
+    line-height: 32px;
   }
 }
 
@@ -301,23 +382,46 @@
   src: url("../assets/font/Provokateur DEMO.otf");
 }
 
-.details {
-  margin-left: 1rem;
-  margin-right: 1rem;
+@font-face {
+  font-family: "Arvo-Regular";
+  src: url("../assets/font/Arvo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../assets/font/Arvo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Regular";
+  src: url("../assets/font/CinzelDecorative-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Medium";
+  src: url("../assets/font/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Bold";
+  src: url("../assets/font/CinzelDecorative-Black.ttf");
 }
 
 .details .details__card {
   height: 100%;
   width: 100%;
+  background-color: #EAECEF;
+  border-radius: 5px;
 }
 
 .details .details__card-segment {
   margin-bottom: 1rem;
+  padding: .3rem;
 }
 
 .details .details__card-segment-name {
   height: 100%;
-  font-family: Apple-Butter;
+  font-family: CinzelDecorative-Medium;
   font-size: 14px;
   line-height: 16px;
   color: inherit;
@@ -326,15 +430,18 @@
 .details .details__card-segment-logo {
   width: 10rem;
   height: 5rem;
-  border-radius: 4px;
+  padding: .5rem;
+  border-radius: 5px;
 }
 
 .details .details__card-segment-address, .details .details__card-segment-hours, .details .details__card-segment-phone, .details .details__card-segment-website, .details .details__card-segment-email, .details .details__card-segment-payment, .details .details__card-segment-rank {
+  font-family: Arvo-Regular;
   font-size: 12px;
   line-height: 14px;
 }
 
 .details .details__card-segment-description {
+  font-family: Arvo-Regular;
   font-size: 14px;
   line-height: 18px;
   margin-bottom: 1rem;
@@ -361,7 +468,7 @@
   .details__card-segment-logo {
     width: 5rem;
     height: 5rem;
-    border-radius: 4px;
+    border-radius: 5px;
   }
   .details__card-segment-address {
     height: 3rem;
@@ -380,47 +487,170 @@
   }
 }
 
+@media only screen and (min-width: 1440px) {
+  .details__card {
+    padding: 0 24px;
+  }
+  .details__card .details__card-segment .details__card-segment-name {
+    font-size: 36px;
+    line-height: 40px;
+    color: inherit;
+  }
+  .details__card .details__card-segment .details__card-segment-logo {
+    width: 20rem;
+    height: 10rem;
+    border-radius: 5px;
+  }
+  .details__card .details__card-segment .details__card-segment-address, .details__card .details__card-segment .details__card-segment-hours, .details__card .details__card-segment .details__card-segment-phone, .details__card .details__card-segment .details__card-segment-website, .details__card .details__card-segment .details__card-segment-email, .details__card .details__card-segment .details__card-segment-payment, .details__card .details__card-segment .details__card-segment-rank {
+    height: 3rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .details__card .details__card-segment .details__card-segment-description {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 1rem;
+  }
+}
+
+@font-face {
+  font-family: "Apple-Butter";
+  src: url("../assets/font/AppleButter.ttf");
+}
+
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf");
+}
+
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf");
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf");
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur DEMO.otf");
+}
+
+@font-face {
+  font-family: "Arvo-Regular";
+  src: url("../assets/font/Arvo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../assets/font/Arvo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Regular";
+  src: url("../assets/font/CinzelDecorative-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Medium";
+  src: url("../assets/font/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Bold";
+  src: url("../assets/font/CinzelDecorative-Black.ttf");
+}
+
 .roulette {
+  margin-top: 5rem;
   display: block;
 }
 
-.roulette .roulette__output-result {
-  border: 1px solid black;
+.roulette__body-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Arvo-Bold";
+  font-size: 24px;
+  line-height: 32px;
 }
 
-.roulette .roulette__selected-list .roulette__selected-list-0 {
+.roulette .roulette__selected-list-0, .roulette .roulette__selected-list-1, .roulette .roulette__selected-list-2, .roulette .roulette__selected-list-3, .roulette .roulette__selected-list-4 {
   height: 3rem;
-  width: 5rem;
-  background-color: #808000;
+  width: 15rem;
   margin-bottom: 1rem;
+  font-family: CinzelDecorative-Medium;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+}
+
+.roulette .roulette__selected-list-0 {
+  background-color: #EAECEF;
 }
 
 .roulette .roulette__selected-list .roulette__selected-list-1 {
-  height: 3rem;
-  width: 5rem;
   background-color: #FBD1A2;
-  margin-bottom: 1rem;
 }
 
 .roulette .roulette__selected-list .roulette__selected-list-2 {
-  height: 3rem;
-  width: 5rem;
   background-color: #BED558;
-  margin-bottom: 1rem;
 }
 
 .roulette .roulette__selected-list .roulette__selected-list-3 {
-  height: 3rem;
-  width: 5rem;
   background-color: #F76156;
-  margin-bottom: 1rem;
 }
 
 .roulette .roulette__selected-list .roulette__selected-list-4 {
-  height: 3rem;
-  width: 5rem;
-  background-color: #008080;
-  margin-bottom: 1rem;
+  background-color: #FBF2DA;
+}
+
+@media only screen and (min-width: 768px) {
+  .roulette {
+    margin-top: 5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .roulette__body-title {
+    margin-bottom: 3rem;
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .roulette .roulette__selected-list-0, .roulette .roulette__selected-list-1, .roulette .roulette__selected-list-2, .roulette .roulette__selected-list-3, .roulette .roulette__selected-list-4 {
+    height: 5rem;
+    width: 25rem;
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .roulette {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
 }
 
 html, body {

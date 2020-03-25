@@ -1,5 +1,6 @@
 @import './breakpoints';
 @import './fonts';
+@import './colors';
 
 
 .select {
@@ -18,12 +19,11 @@
     .foodtrucks__card {
         height: 100%;
         width: 100%;
-        // width: 18rem;
-        // height: 5rem;
+        background-color: $tan;
         margin: 16px 0;
         border: 1px solid black;
         box-shadow: 5px 10px #888888;
-        border-radius: 4px;
+        border-radius: 5px;
     }
     .foodtrucks__card-segment {
             display: flex;
@@ -34,31 +34,34 @@
             
 
             a, &-name {
-                font-family: Apple-Butter;
+                padding-top: .3rem;
+                font-family: CinzelDecorative-Medium;
                 font-size: 24px;
                 line-height: 32px;
                 // text-decoration: none;
-                color: inherit;
+                color: $red;
+                // color: inherit;
             }
             &-logo {
                 width: 5rem;
                 height: 5rem;
+                padding-top: .3rem;
                 object-fit: cover;
                 border-radius: 4px;
             }
             &-address {
-                font-family: Provo;
+                font-family: Arvo-Regular;
                 font-size: 12px;
                 line-height: 14px;
             }
             &-hours {
-                font-family: Provo;
+                font-family: Arvo-Regular;
                 font-size: 12px;
                 line-height: 14px;
                 margin-left: 1rem;
             }
             &-description {
-                font-family: Provo;
+                font-family: Arvo-Regular;
             }
         }
 }
@@ -70,13 +73,22 @@
     .select {
         margin-left: 2rem;
         margin-right: 2rem;
-        margin-bottom: 8rem;
+        margin-bottom: 10rem;
         margin-top: 2rem;
 
     }
     .foodtrucks {
         margin-left: 2rem;
         margin-right: 2rem;
+
+        .foodtrucks__card-segment-address {
+            font-size: 18px;
+            line-height: 24px;
+        }
+        .foodtrucks__card-segment-hours, .foodtrucks__card-segment-description  {
+            font-size: 16px;
+            line-height: 18px;
+        }
     }
 }
 
@@ -95,5 +107,28 @@
     .foodtrucks {
         margin-left: 5rem;
         margin-right: 5rem;
+
+        .checkbox {
+            height: 1.5rem;
+            width: 1.5rem;
+            font-size: 18px;
+            line-height: 24px;
+
+        }
+
+        .foodtrucks__card-segment-logo {
+            width: 10rem;
+            height: 10rem;
+            padding-top: .5rem;
+            padding-right: .5rem;
+        }
+        a, .foodtrucks__card-segment-name, .foodtrucks__card-segment-address {
+            font-size: 32px;
+            line-height: 36px;
+        }
+        .foodtrucks__card-segment-hours, .foodtrucks__card-segment-description  {
+            font-size: 24px;
+            line-height: 32px;
+        }
     }
 }

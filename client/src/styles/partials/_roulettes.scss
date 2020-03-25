@@ -1,47 +1,90 @@
 @import './breakpoints';
+@import './colors';
+@import './fonts';
+
 
 .roulette {
+    margin-top: 5rem;
     display: block;
 
-    .roulette__output-result {
-        border: 1px solid black;
-
+    &__body-title {
+        display: flex;
+        justify-content: center;
+        font-family: "Arvo-Bold";
+        font-size: 24px;
+        line-height: 32px;
     }
 
     .roulette__selected-list {
        
-        .roulette__selected-list-0{
+        &-0, &-1, &-2, &-3, &-4 {
             height: 3rem;
-            width: 5rem;
-            background-color: #808000;
+            width: 15rem;
             margin-bottom: 1rem;
+            font-family: CinzelDecorative-Medium;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+        &-0{
+            background-color: $smoke;
+            
+
         }
         .roulette__selected-list-1 {
-            height: 3rem;
-            width: 5rem;
             background-color: #FBD1A2;
-            margin-bottom: 1rem;
         }
         .roulette__selected-list-2 {
-            height: 3rem;
-            width: 5rem;
             background-color: #BED558;
-            margin-bottom: 1rem;
         }
         .roulette__selected-list-3{
-            height: 3rem;
-            width: 5rem;
             background-color: #F76156;
-            margin-bottom: 1rem;
         }
        .roulette__selected-list-4 {
-            height: 3rem;
-            width: 5rem;
-            background-color: #008080;
-            margin-bottom: 1rem;
+
+            background-color: $tan;
         }
     }
 
 }
 
+
+// tablet
+@include tablet {
+    .roulette {
+        margin-top: 5rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__body-title {
+        margin-bottom: 3rem;
+        font-size: 32px;
+        line-height: 36px;
+    }   
+    
+     .roulette__selected-list {
+        
+
+        &-0, &-1, &-2, &-3, &-4 {
+            height: 5rem;
+            width: 25rem;
+            font-size: 24px;
+            line-height: 32px;  
+        }
+     }
+    }
+}
+
+
+
+// desktop
+@include desktop {
+    .roulette {
+        justify-content: space-evenly;
+    }
+}
 

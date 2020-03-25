@@ -200,7 +200,7 @@ newVendors = newNames.map(array => {
                   onChange={event =>
                     this.handleSelect(event, index, array[0][1])
                   }
-                />
+                className="checkbox" />
                 Select
               </label>: "" }
               <div className="foodtrucks__card-segment">
