@@ -41,8 +41,17 @@ const MapMarker = withScriptjs(
               {props.selectedMarker === props.markers[marker] && (
                 <InfoWindow>
                   <div className="selected__marker">
-                    {/* <img className="foodtrucks__card-segment-logo" src={logo ? logo : unavailable}
-                  alt="food truck logo" /> */}
+                    <img
+                      className="foodtrucks__card-segment-logo"
+                      style={{ width: `10rem`, height: `5rem` }}
+                      src={
+                        props.markers[marker].images
+                          ? props.markers[marker].images.logo
+                          : unavailable
+                      }
+                      alt="food truck logo"
+                    />
+
                     <h4 className="selected__marker-name">
                       {props.markers[marker].name}
                     </h4>

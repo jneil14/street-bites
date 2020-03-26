@@ -87,7 +87,7 @@
 
 .header__line-distance {
   margin-top: .5rem;
-  width: 14rem;
+  width: 80vw;
   height: 1rem;
   border: none;
 }
@@ -156,6 +156,10 @@
       -ms-flex-align: center;
           align-items: center;
   border: 2px solid black;
+}
+
+.foodtrucks__card-segment-logo {
+  width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
@@ -232,7 +236,9 @@
 }
 
 .select {
-  margin: 0 16px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 10rem;
 }
 
 .options__featured, .options__new, .options__all, .options__favorites {
@@ -270,10 +276,9 @@
 }
 
 .foodtrucks .foodtrucks__card-segment a, .foodtrucks .foodtrucks__card-segment-name {
+  width: 11.25rem;
   padding-top: .3rem;
   font-family: CinzelDecorative-Medium;
-  font-size: 24px;
-  line-height: 32px;
   color: #D46240;
 }
 
@@ -314,6 +319,11 @@
     margin-left: 2rem;
     margin-right: 2rem;
   }
+  .foodtrucks a.foodtrucks__card-segment-name {
+    width: 100%;
+    font-size: 24px;
+    line-height: 32px;
+  }
   .foodtrucks .foodtrucks__card-segment-address {
     font-size: 18px;
     line-height: 24px;
@@ -338,6 +348,7 @@
   .foodtrucks .checkbox {
     height: 1.5rem;
     width: 1.5rem;
+    margin: 1rem;
     font-size: 18px;
     line-height: 24px;
   }
@@ -347,7 +358,7 @@
     padding-top: .5rem;
     padding-right: .5rem;
   }
-  .foodtrucks a, .foodtrucks .foodtrucks__card-segment-name, .foodtrucks .foodtrucks__card-segment-address {
+  .foodtrucks a .foodtrucks__card-segment-name, .foodtrucks .foodtrucks__card-segment-address {
     font-size: 32px;
     line-height: 36px;
   }

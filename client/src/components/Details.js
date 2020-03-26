@@ -219,7 +219,7 @@ const Details = ({ vendors, match, closeModalNow }) => {
             {/* <Map /> */}
             <div className="details">
               <div className="details__card">
-                <button onClick={(event) => saveFavorites(event, truck.identifier)} className="details__fav-btn">favoriteIcon</button>
+                <button onClick={(event) => saveFavorites(event, truck.identifier)} className="details__fav-btn">Save Food Truck</button>
                 <div className="details__card-segment">
                   <h3 className="details__card-segment-name">{truck.name}</h3>
                   <img

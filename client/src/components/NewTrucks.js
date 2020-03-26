@@ -7,6 +7,7 @@ import Details from "./Details";
 import Map from './Map';
 import Favorites from "./Favorites";
 import Roulettes from "./Roulettes";
+import favoriteIcon from "../assets/icons/favorite.png";
 
 const options = [
   { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
@@ -107,24 +108,12 @@ export default class NewTrucks extends Component {
     const { selectedOption } = this.state;
     let newVendors;
     const newTrucks = this.state.filteredData.metadata.new;
-    // console.log("New Food Trucks", newTrucks);
-
-
-    // const trucksNew = this.state.filteredData.metadata.new;
-    // console.log("filtered", newTrucks);
-    // const vendors_entries = Object.entries(this.state.filteredData.vendors);
-    // console.log(vendors_entries);
-
-    // newTrucks.map(truck => {
-
-    // });
-
 
 
      const newList = this.state.filteredData.metadata.new;
-    //  console.log("filtered", newList);
+    
      const vendorsEntries = Object.entries(this.state.filteredData.vendors);
-    //  console.log("vendors", vendorsEntries);
+    
      console.log(vendorsEntries[0][1]);
      const newNames = newList.map(truck => {
        return vendorsEntries.filter(arr => {
@@ -134,6 +123,7 @@ export default class NewTrucks extends Component {
      console.log(newNames);
 
      let foodTruck;
+
     // check if info props is loading
     if (undefined) {
       // return (<div>hey</div>)
@@ -144,42 +134,34 @@ export default class NewTrucks extends Component {
     
 console.log(newNames[0][0][1]);
 newVendors = newNames.map(array => {
-    return array[0]["1"]
+    return array[0][1]
 })
 
-    // if (newTrucks === this.props.info.vendors.name) {
-    //   const truck = Object.entries(this.props.info.vendors);
       
       foodTruck = newNames.map((array, index) => {
-        //   console.log(array[0]["1"]);
+        
         
         let logo = unavailable;
-        if (array[0]["1"].images) logo = array[0]["1"].images.logo;
+        if (array[0][1].images) logo = array[0][1].images.logo;
 
         let description = "";
-        if (array[0]["1"].description_short)
-          description = array[0]["1"].description_short;
-        else description = array[0]["1"].description;
+        if (array[0][1].description_short)
+          description = array[0][1].description_short;
+        else description = array[0][1].description;
 
         let hours = "";
         let startHours = "";
         let endHours = "";
-        if (array[0]["1"].open.length !== 0) {
-          console.log(typeof array[0]["1"].open[0].start);
+        if (array[0][1].open.length !== 0) {
+          console.log(typeof array[0][1].open[0].start);
 
-          // array[1].open.map(time => {
-          //   let start = new Date(time.start);
-          //   startHours = start.getHours();
-          //   let end = new Date(time.end);
-          //   endHours = end.getHours();
-          // })
-          let start = new Date(array[0]["1"].open[0].start * 1000);
+          let start = new Date(array[0][1].open[0].start * 1000);
           console.log(start);
           startHours = start.getHours();
-          let end = new Date(array[0]["1"].open[0].end * 1000);
+          let end = new Date(array[0][1].open[0].end * 1000);
           endHours = end.getHours();
         } else {
-          let date = new Date(array[0]["1"].last.time * 1000);
+          let date = new Date(array[0][1].last.time * 1000);
           hours = date.getHours();
         }
         
@@ -189,20 +171,29 @@ newVendors = newNames.map(array => {
           // OG stucture
           <div className="foodtrucks">
             <div className="foodtrucks__card">
-              {((this.state.selectElements || this.state.selectedTrucks[index]) && ((this.state.selectedTrucks.length === 0) || (this.state.selectedTrucks.length !== 0 || this.state.selectedTrucks[index]))) ?  <label>
-                <input
-                  type="checkbox"
-                  checked={
-                    this.state.selectedTrucks.length !== 0
-                      ? this.state.selectedTrucks[index]
-                      : false
-                  }
-                  onChange={event =>
-                    this.handleSelect(event, index, array[0][1])
-                  }
-                className="checkbox" />
-                Select
-              </label>: "" }
+              {(this.state.selectElements ||
+                this.state.selectedTrucks[index]) &&
+              (this.state.selectedTrucks.length === 0 ||
+                this.state.selectedTrucks.length !== 0 ||
+                  this.state.selectedTrucks[index]) ? (
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={
+                      this.state.selectedTrucks.length !== 0
+                        ? this.state.selectedTrucks[index]
+                        : false
+                    }
+                    onChange={event =>
+                      this.handleSelect(event, index, array[0][1])
+                    }
+                    className="checkbox"
+                  />
+                  Select
+                </label>
+              ) : (
+                ""
+              )}
               <div className="foodtrucks__card-segment">
                 <a
                   href="#"
@@ -215,9 +206,6 @@ newVendors = newNames.map(array => {
                   >
                     {array[0][1].name}
                   </Link>
-                  {/* <Switch>
-                    <Route path={`/foodtrucks/:identifier`} component={Details} />
-                  </Switch> */}
                 </a>
                 <img
                   className="foodtrucks__card-segment-logo"
@@ -228,7 +216,7 @@ newVendors = newNames.map(array => {
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[0][1].last.display}
+                  {array[0][1].last && array[0][1].last.display}
                 </h4>
                 <h4 className="foodtrucks__card-segment-hours">
                   {startHours

@@ -6,6 +6,7 @@ import ReactModal from "react-modal";
 import Details from "./FavoriteDetails";
 import Map from "./Map";
 import axios from "axios";
+import favoriteIcon from "../assets/icons/favorite.png"
 
 
 
@@ -135,7 +136,7 @@ export default class Favorites extends Component {
     // how to write a checkbox
     // function=>receive an index&event
     // index refers to the checkbox
-    
+
 
     const savedTruck = () => {
       const identifierArray = this.state.filteredData.map(item => {

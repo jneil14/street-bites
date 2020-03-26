@@ -4,7 +4,9 @@
 
 
 .select {
-    margin: 0 16px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 10rem;
 }
 .options__featured, .options__new, .options__all, .options__favorites {
     color: inherit;
@@ -34,10 +36,9 @@
             
 
             a, &-name {
+                width: 11.25rem;
                 padding-top: .3rem;
                 font-family: CinzelDecorative-Medium;
-                font-size: 24px;
-                line-height: 32px;
                 // text-decoration: none;
                 color: $red;
                 // color: inherit;
@@ -81,6 +82,12 @@
         margin-left: 2rem;
         margin-right: 2rem;
 
+        
+        a.foodtrucks__card-segment-name {
+            width: 100%;
+            font-size: 24px;
+            line-height: 32px;
+        }
         .foodtrucks__card-segment-address {
             font-size: 18px;
             line-height: 24px;
@@ -111,6 +118,7 @@
         .checkbox {
             height: 1.5rem;
             width: 1.5rem;
+            margin: 1rem;
             font-size: 18px;
             line-height: 24px;
 
@@ -122,7 +130,7 @@
             padding-top: .5rem;
             padding-right: .5rem;
         }
-        a, .foodtrucks__card-segment-name, .foodtrucks__card-segment-address {
+        a .foodtrucks__card-segment-name, .foodtrucks__card-segment-address {
             font-size: 32px;
             line-height: 36px;
         }
