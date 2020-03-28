@@ -8,17 +8,12 @@ import NewTrucks from "./components/NewTrucks";
 import Foodtrucks from "./components/Foodtrucks";
 import AllTrucks from "./components/AllTrucks";
 import Favorites from "./components/Favorites";
-import Details from "./components/Details";
 
-// import Roulettes from "./components/Roulettes
 
 class App extends Component {
   state = {
     info: undefined
   };
-
-  // API_KEY
-  // const apiKey = "AIzaSyAyesbQMyKVVbBgKVi2g6VX7mop2z96jBo";
 
   componentDidMount() {
     axios
@@ -39,9 +34,6 @@ class App extends Component {
     return (
       <Router className="App">
         <Header />
-        {/* <Map info={this.state.info.vendors} /> */}
-
-        {/* <TruckMap info={this.state.info.vendors} /> */}
 
         <Switch>
           <Route
@@ -72,10 +64,6 @@ class App extends Component {
             )}
           />
         </Switch>
-        {/* <Foodtrucks info={this.state.info} /> */}
-        {/* <Details info={this.state.info} /> */}
-
-        {/* <Roulettes /> */}
       </Router>
     );
   }

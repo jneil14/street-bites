@@ -4,12 +4,12 @@ const favoritesFile = __dirname + "/../../models/favorites.json";
 const favorites = require(favoritesFile);
 const helper = require("../../helper/helper");
 
-// match
+
 router.get("/", (req, res) => {
     res.json(favorites)
 })
 
-// pop
+
 router.post("/", (req, res) => {
   const newIdentifier = {
     identifier: req.body.identifier
