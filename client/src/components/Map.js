@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { compose } from "recompose";
 import {
   withScriptjs,
   withGoogleMap,
@@ -43,7 +42,7 @@ const MapMarker = withScriptjs(
                   <div className="selected__marker">
                     <img
                       className="foodtrucks__card-segment-logo"
-                      style={{ width: `10rem`, height: `5rem` }}
+                      style={{ width: `10rem`, height: `8rem` }}
                       src={
                         props.markers[marker].images
                           ? props.markers[marker].images.logo
@@ -58,7 +57,7 @@ const MapMarker = withScriptjs(
                     <p className="marker__description">
                       {props.markers[marker].description_short}
                     </p>
-                    <p className="rank">Rank: {props.markers[marker].rank}</p>
+                    <p className="marker__rank">Rank: {props.markers[marker].rank}</p>
                   </div>
                 </InfoWindow>
               )}
@@ -69,6 +68,7 @@ const MapMarker = withScriptjs(
     );
   })
 );
+
 // const MapMarker = compose(withScripts, withGoogleMap) (props => {
 //     return (
 //         <GoogleMap defaultZoom={10} defaultCenter={{ lat: 49.246292, lng: -123.116226 }}>

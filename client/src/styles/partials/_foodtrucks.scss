@@ -13,6 +13,33 @@
     text-decoration: none;
 }
 
+.roulette__instructions {
+    margin: 1rem;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    .roulette__instructions-title {
+        font-family: Arvo-Bold;
+        font-size: 16px;
+        line-height: 18px;
+        padding: .5rem;
+    }
+
+    .roulette__instructions-text {
+        font-family: Arvo-Regular;
+        font-size: 14px;
+        line-height: 16px;
+        padding: .5rem;
+    }
+}
+
+.roulette__back-btn {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 5rem;
+    margin-left: 1rem;
+}
+
 .foodtrucks {
     height: 100%;
     margin-left: 1rem;
@@ -39,9 +66,7 @@
                 width: 11.25rem;
                 padding-top: .3rem;
                 font-family: CinzelDecorative-Medium;
-                // text-decoration: none;
                 color: $red;
-                // color: inherit;
             }
             &-logo {
                 width: 5rem;
@@ -76,8 +101,18 @@
         margin-right: 2rem;
         margin-bottom: 10rem;
         margin-top: 2rem;
-
     }
+
+    .roulette__instructions {
+        margin-left: 2rem;
+        margin-right: 2rem;   
+    }
+
+    .roulette__back-btn {
+        margin-top: 5rem;
+        margin-left: 3rem;
+    }
+
     .foodtrucks {
         margin-left: 2rem;
         margin-right: 2rem;
@@ -106,9 +141,39 @@
     .select {
         margin-left: 11.5rem;
         margin-right: 11.5rem;
-        margin-bottom: 10rem;
+        margin-bottom: 12rem;
         margin-top: 3rem;
+    }
 
+    .options__featured, .options__new, .options__all, .options__favorites {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .roulette__instructions {
+        margin-left: 5rem;
+        margin-right: 5rem;
+
+        .roulette__instructions-title {
+            font-size: 32px;
+            line-height: 36px;
+            padding: 1rem;
+        }
+
+        .roulette__instructions-text {
+            font-size: 24px;
+            line-height: 32px;
+            padding: 1rem;
+        }
+    }
+
+    .roulette__back-btn {
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-top: 10rem;
+        margin-left: 5rem;
+        font-size: 18px;
+        line-height: 24px;
     }
 
     .foodtrucks {
@@ -121,22 +186,42 @@
             margin: 1rem;
             font-size: 18px;
             line-height: 24px;
-
         }
 
         .foodtrucks__card-segment-logo {
-            width: 10rem;
-            height: 10rem;
-            padding-top: .5rem;
+            width: 25rem;
+            height: 15rem;
+            padding-top: 1rem;
             padding-right: .5rem;
         }
-        a .foodtrucks__card-segment-name, .foodtrucks__card-segment-address {
+
+        // for some reason one component works with an <a> tag that has a comma and one works without
+        a .foodtrucks__card-segment-name {
+            font-size: 48px;
+            line-height: 52px;
+            margin-top: 1rem;
+        }
+
+        a, .foodtrucks__card-segment-name {
+            font-size: 48px;
+            line-height: 52px;
+            margin-top: 1rem;
+        }
+
+        .foodtrucks__card-segment-address {
             font-size: 32px;
             line-height: 36px;
         }
-        .foodtrucks__card-segment-hours, .foodtrucks__card-segment-description  {
-            font-size: 24px;
-            line-height: 32px;
+
+        .foodtrucks__card-segment-hours {
+            padding-right: 1rem;
+           font-size: 32px;
+            line-height: 36px;
+        }
+
+        .foodtrucks__card-segment-description  {
+            font-size: 32px;
+            line-height: 36px;
         }
     }
 }

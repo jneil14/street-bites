@@ -9,7 +9,6 @@
         border-radius: 10px;
         font-size: 16px;
         line-height: 18px;
-        margin-bottom: .5rem;
     }
 .details {
     
@@ -25,7 +24,6 @@
             align-items: center;
             background-color: $smoke;
             border: 1px solid black;
-            border-radius: 5px;
         }
         .details__fav-btn:hover {
             background-color: green;
@@ -37,6 +35,7 @@
             margin-bottom: 1rem;
             padding: .3rem;
             
+
             &-name {
                 height: 100%;
                 font-family: CinzelDecorative-Medium;
@@ -56,6 +55,10 @@
                 font-size: 12px;
                 line-height: 14px;
             }
+            
+            &-website-url {
+                text-decoration: underline;
+            }
 
             &-url {
                 font-family: Arvo-Regular;
@@ -65,7 +68,7 @@
                 border: none;
                 background-color: $smoke;
             }
-            
+
             &-description {
                 font-family: Arvo-Regular;
                 font-size: 14px;
@@ -75,6 +78,7 @@
         }
 }
 // end of mobile
+
 
 
 
@@ -109,12 +113,7 @@
             
             .details__card-segment-address, .details__card-segment-hours, .details__card-segment-phone, .details__card-segment-website, .details__card-segment-email, .details__card-segment-payment, .details__card-segment-rank {
                 height: 3rem;
-                font-size: 15px;
-                line-height: 24px;
-            }
-
-            .details__card-segment-url {
-                font-size: 16px;
+                font-size: 18px;
                 line-height: 24px;
             }
             
@@ -146,10 +145,10 @@
         .details__card-segment {
             
             .details__card-segment-name {
-                    font-size: 36px;
-                    line-height: 40px;
-                    color: inherit;
-                }
+                font-size: 36px;
+                line-height: 40px;
+                color: inherit;
+            }
             .details__card-segment-logo {
                 width: 20rem;
                 height: 10rem;
@@ -158,19 +157,13 @@
     
             .details__card-segment-address, .details__card-segment-hours, .details__card-segment-phone, .details__card-segment-website, .details__card-segment-email, .details__card-segment-payment, .details__card-segment-rank {
                 height: 3rem;
-                font-size: 32px;
-                line-height: 36px;
+                font-size: 24px;
+                line-height: 32px;
             }
                 
-            .details__card-segment-url {
-                height: 3rem;
-                font-size: 32px;
-                line-height: 36px;
-            }
-
             .details__card-segment-description {
-                font-size: 32px;
-                line-height: 36px;
+                font-size: 24px;
+                line-height: 32px;
                 margin-bottom: 1rem;
             }
         }

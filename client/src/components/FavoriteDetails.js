@@ -11,172 +11,56 @@ import {
   Marker,
   InfoWindow
 } from "react-google-maps";
-import GoogleMapReact from "google-map-react";
+
 import truckMarker from "../assets/logo/truck-marker.png";
-import favoriteIcon from "../assets/icons/favorite.png";
-import axios from "axios";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-// export default class Details extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//     render() {
-//         return (
-//           <>
-{
-  /* <button className="close-btn" onClick={this.props.closeModalNow}>
-             close
-            </button>
-            <Header /> */
-}
-{
-  /* <Map /> */
-}
-{
-  /* <div className="foodtrucks">
-              <div className="foodtrucks__card">
-                <div className="foodtrucks__card-segment">
-                  <h3 className="foodtrucks__card-segment-name">
-                    Dahbest Foodtruck
-                  </h3>
-                  <img
-                    className="foodtrucks__card-segment-logo"
-                    src={sampleTruck}
-                    alt="food truck logo"
-                  />
-                </div>
-                <div className="foodtrucks__card-segment">
-                  <h4 className="foodtrucks__card-segment-address">
-                    455 Granville
-                  </h4>
-                  <h4 className="foodtrucks__card-segment-hours">
-                    9 a.m. - 10 p.m.
-                  </h4>
-                </div>
-                <div className="foodtrucks__card-segment">
-                  <h4 className="foodtrucks__card-segment-payment">
-                    Cards? accepted
-                  </h4>
-                  <h4 className="foodtrucks__card-segment-rank">Rank: 1</h4>
-                </div>
-                <div className="foodtrucks__card-segment">
-                  <p className="foodtrucks__card-segment-description">
-                    Yummiest food truck in the Whole Wide World
-                  </p>
-                </div>
-              </div>
-            </div> */
-}
-
-//           </>
-//         );
-//     }
-// }
 
 const MapMarker = withScriptjs(
   withGoogleMap(props => {
     return (
       <GoogleMap
-        defaultZoom={8}
+        defaultZoom={9}
         defaultCenter={{ lat: 49.267132, lng: -122.968941 }}
         className="map"
       >
-        {/* {Object.keys(props.markers).map(marker => {
-          const onClick = props.onClick.bind(this, props.markers[marker]); */}
-        {/* return ( */}
+       
         <Marker
           key={"name"}
-          // onClick={onClick}
           position={props.position}
           icon={{
             url: truckMarker,
             scaledSize: new window.google.maps.Size(40, 40)
           }}
         >
-          {/* {props.selectedMarker === props.markers[marker] && ( */}
-          {/* <InfoWindow>
-              <div className="selected__marker">
-                <h4 className="selected__marker-name">
-                  {"name"}
-                </h4>
-                <p className="marker__description">
-                  {"props.markers[marker].description_short"}
-                </p>
-                <p className="rank">{"props.markers[marker].rank"}</p>
-              </div>
-            </InfoWindow> */}
         </Marker>
       </GoogleMap>
     );
   })
 );
 
+
 const Details = ({ vendors, match, closeModalNow }) => {
-//   let actualVendors = [];
-//   let vendorsSet = false;
 
-//   if (vendors !== undefined) {
-//     // actualVendors = [vendors.vendors];
-//     // console.log("vendors.vendors", vendors.vendors);
-//     for (let item in vendors.vendors) {
-//       actualVendors.push(vendors.vendors[item]);
-//     }
-//     // console.log("actual vendors", actualVendors);
-//     vendorsSet = true;
-//   }
 
-  // let hours = "";
-  // let startHours = "";
-  // let endHours = "";
-  // if (vendors.open.length !== 0) {
-  //   console.log(typeof vendors.open[0].start);
-
-  // vendors.open.map(time => {
-  //   let start = new Date(time.start);
-  //   startHours = start.getHours();
-  //   let end = new Date(time.end);
-  //   endHours = end.getHours();
-  // })
-  //   let start = new Date(array[1].open[0].start * 1000);
-  //   console.log(start);
-  //   startHours = start.getHours();
-  //   let end = new Date(array[1].open[0].end * 1000);
-  //   endHours = end.getHours();
-  // } else {
-  //   let date = new Date(array[1].last.time * 1000);
-  //   hours = date.getHours();
-  // }
-
-  console.log(vendors.length);
+  const goToUrl = (event, url) => {
+    window.location.assign(url);
+  };
 
   if (vendors !== undefined) {
-    // if (vendors.vendors !== undefined) {
-      console.log("params identifier", match.params.identifier);
-    //   console.log("actualVendors", actualVendors);
-
       const found = vendors.some(truck => {
-        // console.log(truck.identifier == match.params.identifier);
         return truck.identifier == match.params.identifier;
       });
-      // console.log("found", found);
 
       if (found) {
         const truck = vendors
           .filter(truck => truck.identifier === match.params.identifier)
           .shift();
-        // let truckImages = truck.images.header.map(image =>{
-        //   return image
-        // })
         let hours = "";
         let startHours = "";
         let endHours = "";
         if (truck.open.length !== 0) {
-          console.log(truck.open);
-
           let start = new Date(truck.open[0].start * 1000);
-          console.log(start);
+          
           startHours = start.getHours();
           let end = new Date(truck.open[0].end * 1000);
           endHours = end.getHours();
@@ -194,16 +78,13 @@ const Details = ({ vendors, match, closeModalNow }) => {
             <button className="close-btn" onClick={closeModalNow}>
               close
             </button>
-            {/* <Map /> */}
             <div className="details">
               <div className="details__card">
-                
                 <div className="details__card-segment">
                   <h3 className="details__card-segment-name">{truck.name}</h3>
                   <img
                     className="details__card-segment-logo"
                     src={truck.images ? truck.images.header[0] : unavailable}
-                    // src={truckImages}
                     alt="food truck logo"
                   />
                 </div>
@@ -214,16 +95,29 @@ const Details = ({ vendors, match, closeModalNow }) => {
                   <p className="details__card-segment-hours">
                     {startHours
                       ? `Hours: ${startHours} to ${endHours}`
-                      : `Hours: ${hours} --`}
+                      : `Hours: ${hours} - (closing time not available)`}
                   </p>
                 </div>
 
                 <div className="details__card-segment">
                   <p className="details__card-segment-phone">
-                    Phone: {truck.phone}
+                    Phone:
+                    {truck.phone ? truck.phone : "(Phone number not available)"}
                   </p>
                   <p className="details__card-segment-website">
-                    Website: {truck.url ? truck.url : "(Website not available)"}
+                    Website:
+                    {truck.url ? (
+                      <button
+                        className="details__card-segment-url"
+                        onClick={event =>
+                          goToUrl(event, `http://www.${truck.url}`)
+                        }
+                      >
+                        {truck.url}
+                      </button>
+                    ) : (
+                      "(Website not available)"
+                    )}
                   </p>
                   <p className="details__card-segment-email">
                     Email: {truck.email ? truck.email : "(Email not available)"}
@@ -257,11 +151,7 @@ const Details = ({ vendors, match, closeModalNow }) => {
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={
                     <div
-                      style={{
-                        height: `150px`,
-                        border: `1px solid grey `
-                        // margin: `1rem`
-                      }}
+                      style={{ height: `150px`, border: `1px solid grey ` }}
                     />
                   }
                   mapElement={<div style={{ height: `100%` }} />}
@@ -273,7 +163,6 @@ const Details = ({ vendors, match, closeModalNow }) => {
       } else {
         return <p>Truck not found</p>;
       }
-    // }
   } else {
     return <div>Loading</div>;
   }

@@ -4,16 +4,43 @@ import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
-import Map from './Map';
-import Favorites from "./Favorites";
+import Map from "./Map";
 import Roulettes from "./Roulettes";
-import favoriteIcon from "../assets/icons/favorite.png";
+
 
 const options = [
-  { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
-  { value: "new", label: <Link to={"/new"} className="options__new"> New </Link> },
-  { value: "all", label: <Link to={"/alltrucks"} className="options__all"> All </Link> },
-  {value: "favorites", label: (<Link to={"/favorites"} className="options__favorites">Favorites</Link>)}
+  {
+    value: "featured",
+    label: (
+      <Link to={"/"} className="options__featured">
+        Featured
+      </Link>
+    )
+  },
+  {
+    value: "new",
+    label: (
+      <Link to={"/new"} className="options__new">
+        New
+      </Link>
+    )
+  },
+  {
+    value: "all",
+    label: (
+      <Link to={"/alltrucks"} className="options__all">
+        All
+      </Link>
+    )
+  },
+  {
+    value: "favorites",
+    label: (
+      <Link to={"/favorites"} className="options__favorites">
+        Favorites
+      </Link>
+    )
+  }
 ];
 export default class NewTrucks extends Component {
   constructor(props) {
@@ -25,17 +52,12 @@ export default class NewTrucks extends Component {
       filteredData: this.props.info,
       selectedTrucks: [],
       selectedTrucksArray: [],
-      selectElements: true
-      // info: []
-      // details: [],
+      selectElements: true,
+      showTrucks: true
     };
   }
 
-  // getDerivedStateFromProps = (nextProps, prevState) => {
-  //   console.log("nextProps", nextProps);
-  // }
   componentWillReceiveProps(prevProps, prevState) {
-    console.log("prevProps", prevProps);
     this.setState({
       filteredData: prevProps.info
     });
@@ -43,8 +65,7 @@ export default class NewTrucks extends Component {
 
   componentDidMount() {
     this.setState({
-      filteredData: this.props.info,
-      
+      filteredData: this.props.info
     });
   }
 
@@ -61,86 +82,80 @@ export default class NewTrucks extends Component {
 
   handleChange = selectedOption => {
     this.setState({ selectedOption });
-    console.log("Selected option: ", selectedOption);
   };
 
   handleSelect = (event, index, vendor) => {
-      let tempArray = this.state.selectedTrucks
-      tempArray[index] = !tempArray[index];
-      let selectedTrucksArray = this.state.selectedTrucksArray;
-      if(tempArray[index]) {     
-      if(selectedTrucksArray.length < 6) {
-          selectedTrucksArray.push(vendor)
-          this.setState({
-            selectedTrucks: tempArray, 
-            selectedTrucksArray
-          }, () => console.log("adding trucks", [this.state.selectedTrucks, this.state.selectedTrucksArray]));
-          
-      }
-    
-     if (selectedTrucksArray.length === 5) {
-        // let selectElements = this.state.selectElements
-
-       this.setState({
-         selectElements: false
-       });
-     }
-    }
-    
-    else {
-        console.log("vendor", vendor)
-        let removedTrucksArray = selectedTrucksArray.filter(
-          selectedVendor =>
-            selectedVendor.identifier !== vendor.identifier
-        );
-        console.log(removedTrucksArray)
+    let tempArray = this.state.selectedTrucks;
+    tempArray[index] = !tempArray[index];
+    let selectedTrucksArray = this.state.selectedTrucksArray;
+    if (tempArray[index]) {
+      if (selectedTrucksArray.length < 6) {
+        selectedTrucksArray.push(vendor);
         this.setState({
           selectedTrucks: tempArray,
-          selectedTrucksArray: removedTrucksArray
-        },  () => {if(this.state.selectedTrucksArray.length < 5) this.setState({
-            selectElements: true
-        })});
-    }
+          selectedTrucksArray
+        });
+      }
 
+      if (selectedTrucksArray.length === 5) {
+        this.setState({
+          selectElements: false,
+          showTrucks: true
+        });
+      }
+    } else {
+      let removedTrucksArray = selectedTrucksArray.filter(
+        selectedVendor => selectedVendor.identifier !== vendor.identifier
+      );
+      this.setState(
+        {
+          selectedTrucks: tempArray,
+          selectedTrucksArray: removedTrucksArray
+        },
+        () => {
+          if (this.state.selectedTrucksArray.length < 5)
+            this.setState({
+              selectElements: true
+            });
+        }
+      );
+    }
+  };
+
+
+handleBackBtn = () => {
+  this.setState({
+    showTrucks: false
+  })
 }
+
 
   render() {
     const { selectedOption } = this.state;
     let newVendors;
     const newTrucks = this.state.filteredData.metadata.new;
 
+    const newList = this.state.filteredData.metadata.new;
 
-     const newList = this.state.filteredData.metadata.new;
-    
-     const vendorsEntries = Object.entries(this.state.filteredData.vendors);
-    
-     console.log(vendorsEntries[0][1]);
-     const newNames = newList.map(truck => {
-       return vendorsEntries.filter(arr => {
-         return arr[1].identifier === truck;
-       });
-     });
-     console.log(newNames);
+    const vendorsEntries = Object.entries(this.state.filteredData.vendors);
 
-     let foodTruck;
+    const newNames = newList.map(truck => {
+      return vendorsEntries.filter(arr => {
+        return arr[1].identifier === truck;
+      });
+    });
+
+    let foodTruck;
 
     // check if info props is loading
     if (undefined) {
-      // return (<div>hey</div>)
       return <p className="loading">Loading...</p>;
-
     } else {
+      newVendors = newNames.map(array => {
+        return array[0][1];
+      });
 
-    
-console.log(newNames[0][0][1]);
-newVendors = newNames.map(array => {
-    return array[0][1]
-})
-
-      
       foodTruck = newNames.map((array, index) => {
-        
-        
         let logo = unavailable;
         if (array[0][1].images) logo = array[0][1].images.logo;
 
@@ -153,10 +168,7 @@ newVendors = newNames.map(array => {
         let startHours = "";
         let endHours = "";
         if (array[0][1].open.length !== 0) {
-          console.log(typeof array[0][1].open[0].start);
-
           let start = new Date(array[0][1].open[0].start * 1000);
-          console.log(start);
           startHours = start.getHours();
           let end = new Date(array[0][1].open[0].end * 1000);
           endHours = end.getHours();
@@ -164,18 +176,15 @@ newVendors = newNames.map(array => {
           let date = new Date(array[0][1].last.time * 1000);
           hours = date.getHours();
         }
-        
-      
 
         return (
-          // OG stucture
           <div className="foodtrucks">
             <div className="foodtrucks__card">
               {(this.state.selectElements ||
                 this.state.selectedTrucks[index]) &&
               (this.state.selectedTrucks.length === 0 ||
                 this.state.selectedTrucks.length !== 0 ||
-                  this.state.selectedTrucks[index]) ? (
+                this.state.selectedTrucks[index]) ? (
                 <label>
                   <input
                     type="checkbox"
@@ -216,7 +225,7 @@ newVendors = newNames.map(array => {
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[0][1].last && array[0][1].last.display}
+                  {array[0][1].last ? array[0][1].last.display : "(Address not available. Please refer to the map for location)"}
                 </h4>
                 <h4 className="foodtrucks__card-segment-hours">
                   {startHours
@@ -250,18 +259,50 @@ newVendors = newNames.map(array => {
         );
       });
     }
-    
+
     return (
       <>
-        <Map info={newVendors} />
-        <Select
-          className="select"
-          value={selectedOption}
-          onChange={this.handleChange}
-          options={options}
-        />
-        {foodTruck}
-        {!this.state.selectElements ? <Roulettes vendors={this.state.selectedTrucksArray} /> : ""}
+        {this.state.showTrucks && !this.state.selectElements ? (
+          <>
+            <button className="roulette__back-btn" onClick={this.handleBackBtn}>
+              BACK
+            </button>
+            <Roulettes
+              vendors={this.state.selectedTrucksArray}
+              filteredData={this.state.filteredData}
+            />{" "}
+          </>
+        ) : (
+          <>
+            <Map info={newVendors} />
+            <Select
+              className="select"
+              value={selectedOption}
+              onChange={this.handleChange}
+              options={options}
+            />
+            <div className="roulette__instructions">
+              <p className="roulette__instructions-title">Instructions</p>
+              <p className="roulette__instructions-text">
+                - Pick 5 food trucks for Food Truck Roulette to display.
+              </p>
+              <p className="roulette__instructions-text">
+                - If you want to change food trucks after selecting 5, you can
+                use back button to refer back to the list and select another one.
+              </p>
+              <p className="roulette__instructions-text">
+                - When satisfied, you can now spin the wheel.
+              </p>
+              <p className="roulette__instructions-text">
+                - Whatever color the pointer points to last will be the result.
+              </p>
+              <p className="roulette__instructions-text">
+                - Click on the name of the food truck for more details.
+              </p>
+            </div>
+            {foodTruck}
+          </>
+        )}
       </>
     );
   }

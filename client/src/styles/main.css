@@ -87,7 +87,7 @@
 
 .header__line-distance {
   margin-top: .5rem;
-  width: 80vw;
+  width: 73vw;
   height: 1rem;
   border: none;
 }
@@ -144,6 +144,72 @@
   }
 }
 
+@font-face {
+  font-family: "Apple-Butter";
+  src: url("../assets/font/AppleButter.ttf");
+}
+
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf");
+}
+
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf");
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf");
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur DEMO.otf");
+}
+
+@font-face {
+  font-family: "Arvo-Regular";
+  src: url("../assets/font/Arvo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../assets/font/Arvo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Regular";
+  src: url("../assets/font/CinzelDecorative-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Medium";
+  src: url("../assets/font/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Bold";
+  src: url("../assets/font/CinzelDecorative-Black.ttf");
+}
+
+.foodtrucks__card-segment-logo {
+  width: 100%;
+}
+
+.selected__marker-name {
+  font-family: CinzelDecorative-Bold;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.marker__description, .marker__rank {
+  font-family: Arvo-Regular;
+  font-size: 12px;
+  line-height: 14px;
+}
+
 .map {
   margin: 1rem;
   display: -webkit-box;
@@ -158,10 +224,6 @@
   border: 2px solid black;
 }
 
-.foodtrucks__card-segment-logo {
-  width: 100%;
-}
-
 @media only screen and (min-width: 768px) {
   .map {
     margin: 1.5rem;
@@ -173,6 +235,14 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .selected__marker-name {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .marker__description, .marker__rank {
+    font-size: 16px;
+    line-height: 18px;
+  }
   .map {
     margin-left: 11.25rem;
     margin-right: 11.25rem;
@@ -246,6 +316,33 @@
   text-decoration: none;
 }
 
+.roulette__instructions {
+  margin: 1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.roulette__instructions .roulette__instructions-title {
+  font-family: Arvo-Bold;
+  font-size: 16px;
+  line-height: 18px;
+  padding: .5rem;
+}
+
+.roulette__instructions .roulette__instructions-text {
+  font-family: Arvo-Regular;
+  font-size: 14px;
+  line-height: 16px;
+  padding: .5rem;
+}
+
+.roulette__back-btn {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 5rem;
+  margin-left: 1rem;
+}
+
 .foodtrucks {
   height: 100%;
   margin-left: 1rem;
@@ -315,6 +412,14 @@
     margin-bottom: 10rem;
     margin-top: 2rem;
   }
+  .roulette__instructions {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .roulette__back-btn {
+    margin-top: 5rem;
+    margin-left: 3rem;
+  }
   .foodtrucks {
     margin-left: 2rem;
     margin-right: 2rem;
@@ -338,8 +443,34 @@
   .select {
     margin-left: 11.5rem;
     margin-right: 11.5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 12rem;
     margin-top: 3rem;
+  }
+  .options__featured, .options__new, .options__all, .options__favorites {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .roulette__instructions {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+  .roulette__instructions .roulette__instructions-title {
+    font-size: 32px;
+    line-height: 36px;
+    padding: 1rem;
+  }
+  .roulette__instructions .roulette__instructions-text {
+    font-size: 24px;
+    line-height: 32px;
+    padding: 1rem;
+  }
+  .roulette__back-btn {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 10rem;
+    margin-left: 5rem;
+    font-size: 18px;
+    line-height: 24px;
   }
   .foodtrucks {
     margin-left: 5rem;
@@ -353,18 +484,33 @@
     line-height: 24px;
   }
   .foodtrucks .foodtrucks__card-segment-logo {
-    width: 10rem;
-    height: 10rem;
-    padding-top: .5rem;
+    width: 25rem;
+    height: 15rem;
+    padding-top: 1rem;
     padding-right: .5rem;
   }
-  .foodtrucks a .foodtrucks__card-segment-name, .foodtrucks .foodtrucks__card-segment-address {
+  .foodtrucks a .foodtrucks__card-segment-name {
+    font-size: 48px;
+    line-height: 52px;
+    margin-top: 1rem;
+  }
+  .foodtrucks a, .foodtrucks .foodtrucks__card-segment-name {
+    font-size: 48px;
+    line-height: 52px;
+    margin-top: 1rem;
+  }
+  .foodtrucks .foodtrucks__card-segment-address {
     font-size: 32px;
     line-height: 36px;
   }
-  .foodtrucks .foodtrucks__card-segment-hours, .foodtrucks .foodtrucks__card-segment-description {
-    font-size: 24px;
-    line-height: 32px;
+  .foodtrucks .foodtrucks__card-segment-hours {
+    padding-right: 1rem;
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .foodtrucks .foodtrucks__card-segment-description {
+    font-size: 32px;
+    line-height: 36px;
   }
 }
 
@@ -418,11 +564,41 @@
   src: url("../assets/font/CinzelDecorative-Black.ttf");
 }
 
+.close-btn {
+  background-color: #FBF2DA;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: .5rem;
+}
+
 .details .details__card {
   height: 100%;
   width: 100%;
   background-color: #EAECEF;
   border-radius: 5px;
+}
+
+.details .details__card .details__fav-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #EAECEF;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.details .details__card .details__fav-btn:hover {
+  background-color: green;
+  color: white;
 }
 
 .details .details__card-segment {
@@ -439,7 +615,7 @@
 }
 
 .details .details__card-segment-logo {
-  width: 10rem;
+  width: 12rem;
   height: 5rem;
   padding: .5rem;
   border-radius: 5px;
@@ -451,6 +627,15 @@
   line-height: 14px;
 }
 
+.details .details__card-segment-url {
+  font-family: Arvo-Regular;
+  font-size: 12px;
+  line-height: 14px;
+  text-decoration: underline;
+  border: none;
+  background-color: #EAECEF;
+}
+
 .details .details__card-segment-description {
   font-family: Arvo-Regular;
   font-size: 14px;
@@ -459,6 +644,12 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .details__fav-btn {
+    margin: auto;
+    font-family: Arvo-Regular;
+    font-size: 16px;
+    line-height: 18px;
+  }
   .details__card-segment {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -466,32 +657,30 @@
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    margin: 1rem;
   }
-}
-
-@media only screen and (min-width: 768px) {
-  .details__card-segment-name {
+  .details__card-segment .details__card-segment-name {
     height: 100%;
     font-size: 32px;
     line-height: 36px;
     color: inherit;
   }
-  .details__card-segment-logo {
-    width: 5rem;
-    height: 5rem;
+  .details__card-segment .details__card-segment-logo {
+    width: 15rem;
+    height: 7rem;
     border-radius: 5px;
+    padding: 0;
   }
-  .details__card-segment-address {
+  .details__card-segment .details__card-segment-address, .details__card-segment .details__card-segment-hours, .details__card-segment .details__card-segment-phone, .details__card-segment .details__card-segment-website, .details__card-segment .details__card-segment-email, .details__card-segment .details__card-segment-payment, .details__card-segment .details__card-segment-rank {
     height: 3rem;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 24px;
   }
-  .details__card-segment-hours, .details__card-segment-phone, .details__card-segment-website, .details__card-segment-payment, .details__card-segment-rank {
-    height: 3rem;
-    font-size: 18px;
+  .details__card-segment .details__card-segment-url {
+    font-size: 16px;
     line-height: 24px;
   }
-  .details__card-segment-description {
+  .details__card-segment .details__card-segment-description {
     font-size: 18px;
     line-height: 24px;
     margin-bottom: 1rem;
@@ -499,8 +688,18 @@
 }
 
 @media only screen and (min-width: 1440px) {
+  .close-btn {
+    font-size: 24px;
+    line-height: 32px;
+  }
   .details__card {
     padding: 0 24px;
+  }
+  .details__card .details__fav-btn {
+    margin: auto;
+    font-family: Arvo-Regular;
+    font-size: 20px;
+    line-height: 24px;
   }
   .details__card .details__card-segment .details__card-segment-name {
     font-size: 36px;
@@ -514,12 +713,17 @@
   }
   .details__card .details__card-segment .details__card-segment-address, .details__card .details__card-segment .details__card-segment-hours, .details__card .details__card-segment .details__card-segment-phone, .details__card .details__card-segment .details__card-segment-website, .details__card .details__card-segment .details__card-segment-email, .details__card .details__card-segment .details__card-segment-payment, .details__card .details__card-segment .details__card-segment-rank {
     height: 3rem;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .details__card .details__card-segment .details__card-segment-url {
+    height: 3rem;
+    font-size: 32px;
+    line-height: 36px;
   }
   .details__card .details__card-segment .details__card-segment-description {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 32px;
+    line-height: 36px;
     margin-bottom: 1rem;
   }
 }
@@ -577,6 +781,9 @@
 .roulette {
   margin-top: 5rem;
   display: block;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
 }
 
 .roulette__body-title {
@@ -589,9 +796,10 @@
   font-family: "Arvo-Bold";
   font-size: 24px;
   line-height: 32px;
+  color: white;
 }
 
-.roulette .roulette__selected-list-0, .roulette .roulette__selected-list-1, .roulette .roulette__selected-list-2, .roulette .roulette__selected-list-3, .roulette .roulette__selected-list-4 {
+.roulette .roulette__selected-list a, .roulette .roulette__selected-list-0, .roulette .roulette__selected-list-1, .roulette .roulette__selected-list-2, .roulette .roulette__selected-list-3, .roulette .roulette__selected-list-4 {
   height: 3rem;
   width: 15rem;
   margin-bottom: 1rem;
@@ -606,6 +814,7 @@
       -ms-flex-align: center;
           align-items: center;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 .roulette .roulette__selected-list-0 {
@@ -630,8 +839,6 @@
 
 @media only screen and (min-width: 768px) {
   .roulette {
-    margin-top: 5rem;
-    margin-left: 2rem;
     margin-right: 2rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -648,11 +855,13 @@
     font-size: 32px;
     line-height: 36px;
   }
-  .roulette .roulette__selected-list-0, .roulette .roulette__selected-list-1, .roulette .roulette__selected-list-2, .roulette .roulette__selected-list-3, .roulette .roulette__selected-list-4 {
+  .roulette .roulette__selected-list a, .roulette .roulette__selected-list-0, .roulette .roulette__selected-list-1, .roulette .roulette__selected-list-2, .roulette .roulette__selected-list-3, .roulette .roulette__selected-list-4 {
     height: 5rem;
-    width: 25rem;
+    width: 20rem;
     font-size: 24px;
     line-height: 32px;
+    text-decoration: none;
+    margin-left: .5rem;
   }
 }
 
@@ -661,6 +870,224 @@
     -webkit-box-pack: space-evenly;
         -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
+  }
+  .roulette .roulette__body-title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .roulette .roulette__selected-list .roulette__selected-list-0, .roulette .roulette__selected-list .roulette__selected-list-1, .roulette .roulette__selected-list .roulette__selected-list-2, .roulette .roulette__selected-list .roulette__selected-list-3, .roulette .roulette__selected-list .roulette__selected-list-4 {
+    width: 25rem;
+    text-decoration: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@font-face {
+  font-family: "Apple-Butter";
+  src: url("../assets/font/AppleButter.ttf");
+}
+
+@font-face {
+  font-family: "Popsicle";
+  src: url("../assets/font/KRPopsicle.ttf");
+}
+
+@font-face {
+  font-family: "Another-Shabby";
+  src: url("../assets/font/Anothershabby_pro_regular_v3_trial.ttf");
+}
+
+@font-face {
+  font-family: "Breakfast";
+  src: url("../assets/font/breakfastDEMO.otf");
+}
+
+@font-face {
+  font-family: "Provo";
+  src: url("../assets/font/Provokateur DEMO.otf");
+}
+
+@font-face {
+  font-family: "Arvo-Regular";
+  src: url("../assets/font/Arvo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Arvo-Bold";
+  src: url("../assets/font/Arvo-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Regular";
+  src: url("../assets/font/CinzelDecorative-Regular.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Medium";
+  src: url("../assets/font/CinzelDecorative-Bold.ttf");
+}
+
+@font-face {
+  font-family: "CinzelDecorative-Bold";
+  src: url("../assets/font/CinzelDecorative-Black.ttf");
+}
+
+.close-btn {
+  background-color: #FBF2DA;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.details .details__card {
+  height: 100%;
+  width: 100%;
+  background-color: #EAECEF;
+  border-radius: 5px;
+}
+
+.details .details__card .details__fav-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #EAECEF;
+  border: 1px solid black;
+}
+
+.details .details__card .details__fav-btn:hover {
+  background-color: green;
+  color: white;
+}
+
+.details .details__card-segment {
+  margin-bottom: 1rem;
+  padding: .3rem;
+}
+
+.details .details__card-segment-name {
+  height: 100%;
+  font-family: CinzelDecorative-Medium;
+  font-size: 14px;
+  line-height: 16px;
+  color: inherit;
+}
+
+.details .details__card-segment-logo {
+  width: 12rem;
+  height: 5rem;
+  padding: .5rem;
+  border-radius: 5px;
+}
+
+.details .details__card-segment-address, .details .details__card-segment-hours, .details .details__card-segment-phone, .details .details__card-segment-website, .details .details__card-segment-email, .details .details__card-segment-payment, .details .details__card-segment-rank {
+  font-family: Arvo-Regular;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.details .details__card-segment-website-url {
+  text-decoration: underline;
+}
+
+.details .details__card-segment-url {
+  font-family: Arvo-Regular;
+  font-size: 12px;
+  line-height: 14px;
+  text-decoration: underline;
+  border: none;
+  background-color: #EAECEF;
+}
+
+.details .details__card-segment-description {
+  font-family: Arvo-Regular;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .details__fav-btn {
+    margin: auto;
+    font-family: Arvo-Regular;
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .details__card-segment {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 1rem;
+  }
+  .details__card-segment .details__card-segment-name {
+    height: 100%;
+    font-size: 32px;
+    line-height: 36px;
+    color: inherit;
+  }
+  .details__card-segment .details__card-segment-logo {
+    width: 15rem;
+    height: 7rem;
+    border-radius: 5px;
+    padding: 0;
+  }
+  .details__card-segment .details__card-segment-address, .details__card-segment .details__card-segment-hours, .details__card-segment .details__card-segment-phone, .details__card-segment .details__card-segment-website, .details__card-segment .details__card-segment-email, .details__card-segment .details__card-segment-payment, .details__card-segment .details__card-segment-rank {
+    height: 3rem;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .details__card-segment .details__card-segment-description {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .close-btn {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .details__card {
+    padding: 0 24px;
+  }
+  .details__card .details__fav-btn {
+    margin: auto;
+    font-family: Arvo-Regular;
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .details__card .details__card-segment .details__card-segment-name {
+    font-size: 36px;
+    line-height: 40px;
+    color: inherit;
+  }
+  .details__card .details__card-segment .details__card-segment-logo {
+    width: 20rem;
+    height: 10rem;
+    border-radius: 5px;
+  }
+  .details__card .details__card-segment .details__card-segment-address, .details__card .details__card-segment .details__card-segment-hours, .details__card .details__card-segment .details__card-segment-phone, .details__card .details__card-segment .details__card-segment-website, .details__card .details__card-segment .details__card-segment-email, .details__card .details__card-segment .details__card-segment-payment, .details__card .details__card-segment .details__card-segment-rank {
+    height: 3rem;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .details__card .details__card-segment .details__card-segment-description {
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 1rem;
   }
 }
 

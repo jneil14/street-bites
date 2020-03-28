@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
 import Map from "./Map";
-import Favorites from './Favorites'
+import Roulettes from "./Roulettes";
+import favoriteIcon from "../assets/icons/favorite.png";
+import RoulettesCopy from "../components/RoulettesCopy";
 
 const options = [
   {
@@ -35,19 +37,28 @@ const options = [
       </Link>
     )
   },
-  {value: "favorites", label: (<Link to={"/favorites"} className="options__favorites">Favorites</Link>)}
+  {
+    value: "favorites",
+    label: (
+      <Link to={"/favorites"} className="options__favorites">
+        Favorites
+      </Link>
+    )
+  }
 ];
-export default class Foodtrucks extends Component {
+export default class NewTrucks extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       selectedOption: null,
       showModal: false,
-      filteredData: this.props.info
+      filteredData: this.props.info,
+      selectedTrucks: [],
+      selectedTrucksArray: [],
+      selectElements: true
     };
   }
-
 
   componentWillReceiveProps(prevProps, prevState) {
     this.setState({
@@ -69,46 +80,76 @@ export default class Foodtrucks extends Component {
   handleCloseModal = () => {
     this.setState({ showModal: false });
     // window.location.pathname = "/foodtrucks";
-    return <Redirect to="/foodtrucks" />;
+    return <Redirect to="/new" />;
   };
 
   handleChange = selectedOption => {
     this.setState({ selectedOption });
   };
 
+  handleSelect = (event, index, vendor) => {
+    let tempArray = this.state.selectedTrucks;
+    tempArray[index] = !tempArray[index];
+    let selectedTrucksArray = this.state.selectedTrucksArray;
+    if (tempArray[index]) {
+      if (selectedTrucksArray.length < 6) {
+        selectedTrucksArray.push(vendor);
+        this.setState({
+          selectedTrucks: tempArray,
+          selectedTrucksArray
+        });
+      }
+
+      if (selectedTrucksArray.length === 5) {
+        this.setState({
+          selectElements: false
+        });
+      }
+    } else {
+      let removedTrucksArray = selectedTrucksArray.filter(
+        selectedVendor => selectedVendor.identifier !== vendor.identifier
+      );
+      this.setState(
+        {
+          selectedTrucks: tempArray,
+          selectedTrucksArray: removedTrucksArray
+        },
+        () => {
+          if (this.state.selectedTrucksArray.length < 5)
+            this.setState({
+              selectElements: true
+            });
+        }
+      );
+    }
+  };
+
   render() {
     const { selectedOption } = this.state;
-    let sortedTruckRank;
-    let topVendors;
+    let newVendors;
+    const newTrucks = this.state.filteredData.metadata.new;
+
+    const newList = this.state.filteredData.metadata.new;
+
+    const vendorsEntries = Object.entries(this.state.filteredData.vendors);
+
+    const newNames = newList.map(truck => {
+      return vendorsEntries.filter(arr => {
+        return arr[1].identifier === truck;
+      });
+    });
+
     let foodTruck;
 
-    if (this.props.info.vendors) {
-      let truck = Object.entries(this.props.info.vendors);
-      
-      truck = truck.filter(array => array[1].rank < 11);
-      
-      let truckRankObj = [];
-      let truckRank = truck.map((array, index) => {
-        truckRankObj.push([array[1].rank, array[1]]);
-        return [array[1].rank];
-      });
-      truckRank.sort(function(a, b) {
-        return a - b;
-      });
-      sortedTruckRank = truckRank.map(rank => {
-        let truckRankArray = [];
-        truckRankObj.forEach(truck => {
-          if (truck[0] === rank[0]) {
-            truckRankArray.push(truck);
-          }
-        });
-        return truckRankArray;
-      });
-      topVendors = sortedTruckRank.map(array => {
+    // check if info props is loading
+    if (undefined) {
+      return <p className="loading">Loading...</p>;
+    } else {
+      newVendors = newNames.map(array => {
         return array[0][1];
       });
-      
-      foodTruck = sortedTruckRank.map((array, index) => {
+
+      foodTruck = newNames.map((array, index) => {
         let logo = unavailable;
         if (array[0][1].images) logo = array[0][1].images.logo;
 
@@ -133,6 +174,29 @@ export default class Foodtrucks extends Component {
         return (
           <div className="foodtrucks">
             <div className="foodtrucks__card">
+              {(this.state.selectElements ||
+                this.state.selectedTrucks[index]) &&
+              (this.state.selectedTrucks.length === 0 ||
+                this.state.selectedTrucks.length !== 0 ||
+                this.state.selectedTrucks[index]) ? (
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={
+                      this.state.selectedTrucks.length !== 0
+                        ? this.state.selectedTrucks[index]
+                        : false
+                    }
+                    onChange={event =>
+                      this.handleSelect(event, index, array[0][1])
+                    }
+                    className="checkbox"
+                  />
+                  Select
+                </label>
+              ) : (
+                ""
+              )}
               <div className="foodtrucks__card-segment">
                 <a
                   href="#"
@@ -140,29 +204,28 @@ export default class Foodtrucks extends Component {
                   onClick={this.handleOpenModal}
                 >
                   <Link
-                    to={`/foodtrucks/${array[0][1].identifier}`}
+                    to={`/new/${array[0][1].identifier}`}
                     key={array[0][1].identifier}
-                    className="foodtrucks__card-segment-name"
                   >
                     {array[0][1].name}
                   </Link>
                 </a>
                 <img
                   className="foodtrucks__card-segment-logo"
-                  src={logo}
+                  src={logo ? logo : unavailable}
                   alt="food truck logo"
                 />
               </div>
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[0][1].last.display}
+                  {array[0][1].last && array[0][1].last.display}
                 </h4>
-                <p className="foodtrucks__card-segment-hours">
+                <h4 className="foodtrucks__card-segment-hours">
                   {startHours
-                    ? `Hours: ${startHours} to ${endHours}`
-                    : `Hours: ${hours} - (closing time not available)`}
-                </p>
+                    ? `Open ${startHours} to ${endHours}`
+                    : `Open: ${hours} --`}
+                </h4>
               </div>
               <div className="foodtrucks__card-segment">
                 <p className="foodtrucks__card-segment-description">
@@ -176,8 +239,7 @@ export default class Foodtrucks extends Component {
               contentLabel="Minimal Modal Example"
             >
               <Route
-                exact
-                path={`/foodtrucks/:identifier`}
+                path={`/new/:identifier`}
                 render={routerProps => (
                   <Details
                     vendors={this.state.filteredData}
@@ -194,14 +256,23 @@ export default class Foodtrucks extends Component {
 
     return (
       <>
-        <Map info={topVendors} />
+        <Map info={newVendors} />
         <Select
           className="select"
           value={selectedOption}
           onChange={this.handleChange}
           options={options}
         />
-        {foodTruck}
+
+        {/* {foodTruck} */}
+        {!this.state.selectElements ? (
+          <RoulettesCopy
+            vendors={this.state.selectedTrucksArray}
+            filteredData={this.state.filteredData}
+          />
+        ) : (
+          foodTruck
+        )}
       </>
     );
   }
