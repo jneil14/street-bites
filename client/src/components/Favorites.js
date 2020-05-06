@@ -27,16 +27,23 @@ export default class Favorites extends Component {
   }
 
   componentDidMount() {
-    
     axios.get("http://localhost:5000/api/favorites").then( (res) => {
-      this.setState(
-        {
-          filteredData: res.data
-        }
-      );    
+      this.setState({filteredData: res.data});    
     }) 
   }
-  
+
+  removeFavorite = (event, identifier) => {
+    axios
+      .delete(`http://localhost:5000/api/favorites/${identifier}`)
+      .then(respond => {
+        if (respond.data) {
+          this.setState({
+            filteredData: respond.data.favorites
+          })
+          console.log("truck has been removed", respond.data);
+        }
+      });
+  }
 
   handleOpenModal = e => {
     e.preventDefault();
@@ -102,6 +109,9 @@ export default class Favorites extends Component {
             return (
               <div className="foodtrucks">
                 <div className="foodtrucks__card">
+                  <button className="foodtrucks__favorite-remove" onClick={event => this.removeFavorite(event, array.identifier)}>
+                    x Remove
+                  </button>
                   <div className="foodtrucks__card-segment">
                     <a
                       href="#"
@@ -129,8 +139,8 @@ export default class Favorites extends Component {
                     </h4>
                     <h4 className="foodtrucks__card-segment-hours">
                       {startHours
-                        ? `Open ${startHours} to ${endHours}`
-                        : `Open: ${hours} --`}
+                        ? `Hours: ${startHours} to ${endHours}`
+                        : `Hours: ${hours} --`}
                     </h4>
                   </div>
                   <div className="foodtrucks__card-segment">

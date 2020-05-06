@@ -4,10 +4,8 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker,
-  InfoWindow
+  Marker 
 } from "react-google-maps";
-import GoogleMapReact from 'google-map-react';
 import truckMarker from "../assets/logo/truck-marker.png";
 import axios from "axios";
 
@@ -16,7 +14,7 @@ const saveFavorites = (event, identifier) => {
   axios.post("http://localhost:5000/api/favorites", {identifier}).then(
     respond => {
       if(!respond.data) {
-        console.log("Food truck is saved already!")
+        alert("Food truck has already been saved!")
       }
     
     }  
@@ -71,7 +69,7 @@ const goToUrl = (event, url) => {
     if (vendors.vendors !== undefined) {
 
       const found = actualVendors.some(truck => {
-        return truck.identifier == match.params.identifier;
+        return truck.identifier === match.params.identifier;
       });
 
       if (found) {
@@ -115,7 +113,11 @@ const goToUrl = (event, url) => {
                   <h3 className="details__card-segment-name">{truck.name}</h3>
                   <img
                     className="details__card-segment-logo"
-                    src={truck.images ? truck.images.header[0] : unavailable}
+                    src={
+                      truck.images
+                        ? truck.images.logo || truck.images.header[0]
+                        : unavailable
+                    }
                     alt="food truck logo"
                   />
                 </div>
@@ -157,7 +159,15 @@ const goToUrl = (event, url) => {
 
                 <div className="details__card-segment">
                   <p className="details__card-segment-payment">
-                    Payment Method: {truck.payment_methods}
+                    Payment Method:
+                    {truck.payment_methods
+                      ? ` ${Object.values(truck.payment_methods)
+                          .join(", ")
+                          .slice(0)
+                          .replace("_", " ")
+                          .replace("_", " ")
+                          .replace("_", " ")} `
+                      : "(Sorry,  not available)"}
                   </p>
                   <p className="details__card-segment-rank">
                     Rank: {truck.rank}
@@ -178,7 +188,7 @@ const goToUrl = (event, url) => {
                     lat: truck.last && truck.last.latitude,
                     lng: truck.last && truck.last.longitude
                   }}
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
+                  googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&libraries=places`}
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={
                     <div

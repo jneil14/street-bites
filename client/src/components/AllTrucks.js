@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
 import Map from "./Map";
-import Favorites from "./Favorites";
 
 const options = [
   { value: "featured", label: <Link to={"/"} className="options__featured"> Featured </Link> },
@@ -21,8 +20,6 @@ export default class AllTrucks extends Component {
       selectedOption: null,
       showModal: false,
       filteredData: this.props.info
-      // info: []
-      // details: [],
     };
   }
 
@@ -61,21 +58,10 @@ export default class AllTrucks extends Component {
   render() {
     const { selectedOption } = this.state;
 
-//   const newTrucks = this.state.filteredData.metadata.new;
-//   console.log("filtered", newTrucks);
-//   const vendors_entries = Object.entries(this.state.filteredData.vendors);
-//   console.log("vendors", vendors_entries);
-// console.log(vendors_entries[0][1]);
-//  const newNames =  newTrucks.map(truck => {
-//     return vendors_entries.filter(arr => {
-//       return arr[1].identifier === truck;
-//     })
-//   });
-// console.log(newNames);
 
     // check if info props is loading
     if (!undefined) {
-      // return (<div>hey</div>)
+      
     } else {
       return <p className="loading">Loading..</p>;
     }
@@ -83,7 +69,6 @@ export default class AllTrucks extends Component {
     let foodTruck;
     if (this.props.info.vendors) {
       const truck = Object.entries(this.props.info.vendors);
-    //   truck.length = 10;
       foodTruck = truck.map(array => {
         let logo = unavailable;
         if (array[1].images) logo = array[1].images.logo;
@@ -131,9 +116,6 @@ export default class AllTrucks extends Component {
                   >
                     {array[1].name}
                   </Link>
-                  {/* <Switch>
-                    <Route path={`/foodtrucks/:identifier`} component={Details} />
-                  </Switch> */}
                 </a>
                 <img
                   className="foodtrucks__card-segment-logo"
@@ -148,8 +130,8 @@ export default class AllTrucks extends Component {
                 </h4>
                 <h4 className="foodtrucks__card-segment-hours">
                   {startHours
-                    ? `Open ${startHours} to ${endHours}`
-                    : `Open: ${hours} --`}
+                    ? `Hours: ${startHours} to ${endHours}`
+                    : `Hours: ${hours} - (closing time not available)`}
                 </h4>
               </div>
               <div className="foodtrucks__card-segment">

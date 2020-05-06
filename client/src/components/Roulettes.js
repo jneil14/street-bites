@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import Roulette from 'react-roulette';
 import Details from './Details';
 import ReactModal from "react-modal";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
-import background from "../assets/images/roulette-background.jpg";
+import { Route, Link, Redirect } from "react-router-dom";
 
 
 export default class Roulettes extends Component {
@@ -26,6 +25,8 @@ export default class Roulettes extends Component {
 
   render() {
     let items = this.props.vendors.map(vendor => vendor.identifier);
+    // console.log(this.props.vendors)
+    let vendors = this.props.vendors;
 
     const colors = ["#EAECEF", "#FBD1A2", "#BED558", "#F76156", "#FBF2DA"];
     
@@ -35,24 +36,24 @@ export default class Roulettes extends Component {
           <div className="roulette__body">
             <h1 className="roulette__body-title">Food Truck Roulette</h1>
             {this.state.showRoulette ? (
-              <Roulette
-                items={items}
-                colors={colors}
-              />
+              <Roulette items={items} colors={colors} />
             ) : (
               ""
             )}
           </div>
           <div className="roulette__selected">
             <div className="roulette__selected-list">
-              {items.map((vendor, index) => (
+              {Object.keys(vendors).map((vendor, index) => (
                 <a
                   href="#"
                   className={`roulette__selected-list-${index}`}
                   onClick={this.handleOpenModal}
                 >
-                  <Link to={`/new/${vendor}`} key={vendor}>
-                    {vendor}
+                  <Link
+                    to={`/new/${vendors[vendor].identifier}`}
+                    key={vendors[vendor].identifier}
+                  >
+                    {vendors[vendor].name}
                   </Link>
                 </a>
               ))}

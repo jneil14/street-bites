@@ -5,7 +5,6 @@ import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
 import Details from "./Details";
 import Map from "./Map";
-import Favorites from './Favorites'
 
 const options = [
   {

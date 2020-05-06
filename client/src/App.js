@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./styles/main.css";
 import axios from "axios";
 import Header from "./components/Header";
-import Map from "./components/Map";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NewTrucks from "./components/NewTrucks";
 import Foodtrucks from "./components/Foodtrucks";

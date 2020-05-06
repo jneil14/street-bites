@@ -99,7 +99,9 @@
        
         // &-0 does not apply the styling
          .roulette__selected-list-0, .roulette__selected-list-1, .roulette__selected-list-2, .roulette__selected-list-3, .roulette__selected-list-4 {
-            width: 25rem;
+            
+            height: 6rem;
+            width: 30rem;
             text-decoration: none;
             display: flex;
         }

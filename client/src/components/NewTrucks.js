@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
 import Select from "react-select";
 import unavailable from "../assets/logo/unavailable.jpg";
 import ReactModal from "react-modal";
@@ -80,9 +80,17 @@ export default class NewTrucks extends Component {
     return <Redirect to="/new" />;
   };
 
-  handleChange = selectedOption => {
-    this.setState({ selectedOption });
-  };
+  // handleChange = selectedOption => {
+  //   this.setState({ selectedOption });
+  // };
+
+  handleChange = event => {
+    this.setState({
+      selectedOption: event
+    }, () => {
+      this.props.history.push(`/${event.value}`);
+    });
+  }
 
   handleSelect = (event, index, vendor) => {
     let tempArray = this.state.selectedTrucks;
@@ -185,7 +193,7 @@ handleBackBtn = () => {
               (this.state.selectedTrucks.length === 0 ||
                 this.state.selectedTrucks.length !== 0 ||
                 this.state.selectedTrucks[index]) ? (
-                <label>
+                <label className="checkbox__label">
                   <input
                     type="checkbox"
                     checked={
@@ -225,12 +233,14 @@ handleBackBtn = () => {
 
               <div className="foodtrucks__card-segment">
                 <h4 className="foodtrucks__card-segment-address">
-                  {array[0][1].last ? array[0][1].last.display : "(Address not available. Please refer to the map for location)"}
+                  {array[0][1].last
+                    ? array[0][1].last.display
+                    : "(Address not available. Please refer to the map for location)"}
                 </h4>
                 <h4 className="foodtrucks__card-segment-hours">
                   {startHours
-                    ? `Open ${startHours} to ${endHours}`
-                    : `Open: ${hours} --`}
+                    ? `Hours: ${startHours} to ${endHours}`
+                    : `Hours: ${hours} - (closing time not available)`}
                 </h4>
               </div>
               <div className="foodtrucks__card-segment">

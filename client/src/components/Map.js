@@ -111,15 +111,18 @@ export default class Map extends Component {
     render() {
         return (
           <div className="map">
-              <MapMarker className="map"
-                selectedMarker={this.state.selectedMarker}
-                markers={this.props.info}
-                onClick={this.handleClick}
-                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ width: `100%`, height: `400px` }} />}
-                mapElement={<div style={{ height: `100%` }} />}
-              />
+            <MapMarker
+              className="map"
+              selectedMarker={this.state.selectedMarker}
+              markers={this.props.info}
+              onClick={this.handleClick}
+              googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&libraries=places`}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={
+                <div style={{ width: `100%`, height: `400px` }} />
+              }
+              mapElement={<div style={{ height: `100%` }} />}
+            />
           </div>
         );
     }

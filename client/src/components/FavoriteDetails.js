@@ -48,7 +48,7 @@ const Details = ({ vendors, match, closeModalNow }) => {
 
   if (vendors !== undefined) {
       const found = vendors.some(truck => {
-        return truck.identifier == match.params.identifier;
+        return truck.identifier === match.params.identifier;
       });
 
       if (found) {
@@ -72,6 +72,16 @@ const Details = ({ vendors, match, closeModalNow }) => {
             hours = "Hours not available";
           }
         }
+
+      function removeComma(arr) {
+        let payments = arr.replace(/,\s*$/, "")
+        return payments
+      }
+
+      function removeLine(arr) {
+       let method = arr.remove("_")
+        return method
+      }
 
         return (
           <>
@@ -126,7 +136,15 @@ const Details = ({ vendors, match, closeModalNow }) => {
 
                 <div className="details__card-segment">
                   <p className="details__card-segment-payment">
-                    Payment Method: {truck.payment_methods}
+                    Payment Method:
+                    {truck.payment_methods ?` ${Object.values(
+                      truck.payment_methods
+                    )
+                      .join(", ")
+                      .slice(0)
+                      .replace("_", " ")
+                      .replace("_", " ")
+                      .replace("_", " ")} `: "(Sorry,  not available)"}
                   </p>
                   <p className="details__card-segment-rank">
                     Rank: {truck.rank}
@@ -147,7 +165,7 @@ const Details = ({ vendors, match, closeModalNow }) => {
                     lat: truck.last.latitude,
                     lng: truck.last.longitude
                   }}
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAU9E2Ez3NKGq19WK8dN-XVxP23F1-8IpA&libraries=places"
+                  googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_KEY}&libraries=places`}
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={
                     <div
