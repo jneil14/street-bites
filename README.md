@@ -4,7 +4,7 @@
 
 <h3>To run this app, you need to: </h3>
 
-<h4>
+<p>
 - Clone the repo in your terminal by clicking the green clone or download button at the top right and copy the url
 
 - Open a terminal or use the terminal in your favorite IDE
@@ -17,9 +17,9 @@
 
 - Type npm install to install all dependencies
 
-- Lastly, open up the <i>server</i> folder in the terminal and type <b>npm run dev</b> to run the app locally.
+- Lastly, open up the <b><i>server</i></b> folder in the terminal and type <b>npm run dev</b> to run the app locally.
 
 - To look at the code, just open up the project in your favorite code editor!
-</h4>
+</p>
 
 <h2>ENJOY!!</h2>
